@@ -7,12 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            overflow: hidden;
-            height: 100vh;
+            overflow: auto; 
+            height: auto;
             width: 100vw;
         }
         
@@ -29,7 +30,8 @@
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            overflow: visible;
+            margin-bottom: 0.5rem;
         }
         
         .table-header {
@@ -37,48 +39,69 @@
             color: white;
             padding: 1.5rem;
             margin: -2rem -2rem 2rem -2rem;
+            /* 🔥 NEW: Curve top-left and top-right edges */
+            border-radius: 20px 20px 0 0; 
         }
         
         .metric-row {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 1rem;
-            padding: 1rem 0;
+            gap: 1.5rem; 
+            padding: 0.6rem 0.5rem; 
             border-bottom: 1px solid #e9ecef;
             align-items: center;
         }
         
         .metric-row:last-child {
-            border-bottom: none;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 0.8rem; 
         }
         
         .metric-label {
             font-weight: 600;
             color: #6c757d;
+            text-align: left;
         }
         
         .metric-value {
             font-weight: 700;
             color: #001F3F;
-            text-align: center;
+            text-align: right;
+            padding-right: 1rem; 
         }
         
+        .table-header .metric-row > div:nth-child(1) {
+            text-align: left;
+        }
+        .table-header .metric-row > div:nth-child(2),
+        .table-header .metric-row > div:nth-child(3) {
+            text-align: right;
+            padding-right: 1rem;
+        }
+
         .highlight-box {
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             color: #001F3F;
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 1rem;
             font-weight: 600;
             margin-top: 2rem;
         }
+
+        /* 🔥 NEW: Custom class for smaller, aligned highlight text */
+        .highlight-text-small {
+            font-size: 0.7rem; 
+            line-height: 1.2;
+            padding-top: 0.1rem; 
+        }
         
         .content-container {
-            height: 100vh;
+            height: auto; 
             width: 100vw;
-            padding: 3rem;
+            padding: 5rem 3rem 5rem 3rem; 
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
         }
         
         .currency-note {
@@ -112,14 +135,14 @@
             
             <div class="metric-row">
                 <div class="metric-label">Target Size</div>
-                <div class="metric-value">₹500cr</div>
-                <div class="metric-value">₹500cr</div>
+                <div class="metric-value">₹500cr ($60M)</div>
+                <div class="metric-value">₹500cr ($60M)</div>
             </div>
             
             <div class="metric-row">
                 <div class="metric-label">Hard Cap</div>
-                <div class="metric-value">₹1,000cr</div>
-                <div class="metric-value">₹1,000cr</div>
+                <div class="metric-value">₹1,000cr ($120M)</div>
+                <div class="metric-value">₹1,000cr ($120M)</div>
             </div>
             
             <div class="metric-row">
@@ -162,16 +185,16 @@
         <div class="highlight-box text-center">
             <div class="grid grid-cols-3 gap-8">
                 <div>
-                    <i class="fas fa-calendar-alt text-3xl mb-2"></i>
-                    <p class="text-sm">Multi-close fundraising with equalization</p>
+                    <i class="fas fa-calendar-alt text-2xl mb-1"></i>
+                    <p class="highlight-text-small">Multi-close fundraising with equalization</p>
                 </div>
                 <div>
-                    <i class="fas fa-handshake text-3xl mb-2"></i>
-                    <p class="text-sm">Co-investment and sidecar programs available</p>
+                    <i class="fas fa-handshake text-2xl mb-1"></i>
+                    <p class="highlight-text-small">Co-investment and sidecar programs available</p>
                 </div>
                 <div>
-                    <i class="fas fa-globe text-3xl mb-2"></i>
-                    <p class="text-sm">Global LP onboarding with Singapore VCC</p>
+                    <i class="fas fa-globe text-2xl mb-1"></i>
+                    <p class="highlight-text-small">Global LP onboarding with Singapore VCC</p>
                 </div>
             </div>
             <p class="mt-4 text-sm font-medium">

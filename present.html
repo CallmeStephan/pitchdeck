@@ -74,14 +74,18 @@
           <span id="current-slide">1</span> / <span id="total-slides">12</span>
       </div>
       <div class="keyboard-hint">
-          ← → / Space / Home / End
+          ← → / Swipe Left/Right / Space
       </div>
   
       <script>
           let currentSlide = 0;
           const slides = document.querySelectorAll('.slide');
           const totalSlides = slides.length;
-  
+          
+          let touchstartX = 0;
+          let touchendX = 0;
+          const minSwipeDistance = 50; // Minimum pixels to count as a swipe
+
           function updateSlideDisplay() {
               slides.forEach((slide, index) => {
                   if (index === currentSlide) {
@@ -114,6 +118,7 @@
               }
           }
   
+          // --- 1. Keyboard Navigation (Desktop/Tablet with keyboard) ---
           window.addEventListener('keydown', e => {
               if (e.key === 'ArrowRight' || e.key === ' ') {
                   e.preventDefault();
@@ -129,10 +134,29 @@
                   goToSlide(totalSlides - 1);
               }
           });
-  
-          window.addEventListener('mouseover', () => {
-              window.focus();
+          
+          // --- 2. Touch/Swipe Navigation (Smartphones/Tablets) ---
+          document.addEventListener('touchstart', e => {
+              touchstartX = e.changedTouches[0].screenX;
           });
+
+          document.addEventListener('touchend', e => {
+              touchendX = e.changedTouches[0].screenX;
+              
+              const swipeDistance = touchendX - touchstartX;
+
+              if (swipeDistance > minSwipeDistance) {
+                  // Swipe Right (Go Back)
+                  e.preventDefault();
+                  prevSlide();
+              } else if (swipeDistance < -minSwipeDistance) {
+                  // Swipe Left (Go Next)
+                  e.preventDefault();
+                  nextSlide();
+              }
+          });
+  
+          // --- 3. Communication from IFrames ---
           window.addEventListener('message', e => {
               if (e.data === 'go-next') {
                   nextSlide();
@@ -140,6 +164,8 @@
                   prevSlide();
               }
           });
+          
+          // Initial setup
           if (totalSlides > 0) {
               document.getElementById('total-slides').textContent = totalSlides;
               updateSlideDisplay();

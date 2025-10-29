@@ -2,12 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Baseerat Holdings - Income Fund</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    
     <style>
+        /* These styles should ideally be in style.css, 
+           but they are kept here for now since they were in your original code.
+           Make sure to integrate them into your main style.css! */
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -32,6 +40,7 @@
             margin-bottom: 2rem;
         }
         
+        /* 🔥 FIXED STYLES: Using Flexbox for centering 🔥 */
         .metric-card {
             background: white;
             border-radius: 12px;
@@ -39,17 +48,33 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             border-left: 4px solid #008000;
             transition: transform 0.3s ease;
+            
+            /* FIX: Use Flexbox for reliable vertical/horizontal centering */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
         
         .metric-card:hover {
             transform: translateY(-3px);
         }
         
+        /* 🔥 FIXED STYLES: Added margin and centered value 🔥 */
         .metric-value {
             font-size: 2rem;
             font-weight: 900;
             color: #008000;
             line-height: 1;
+            margin-bottom: 0.5rem; /* Space below the value */
+        }
+
+        /* Consistent Label Style */
+        .metric-label {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.2;
         }
         
         .content-container {
@@ -79,6 +104,7 @@
             margin: 0.25rem;
         }
         
+        /* Yield Indicator Adjustments */
         .yield-indicator {
             background: #FFD700;
             color: #001F3F;
@@ -91,7 +117,7 @@
             justify-content: center;
             font-weight: 900;
             font-size: 1.2rem;
-            margin: 0 auto 1rem;
+            margin: 0 auto 0.5rem; /* Adjusted margin */
         }
     </style>
 </head>
@@ -115,24 +141,27 @@
         </div>
         
         <div class="grid grid-cols-4 gap-6 mb-6">
-            <div class="metric-card text-center">
+            <div class="metric-card">
                 <div class="yield-indicator">
                     <div>8-9%</div>
                     <div class="text-xs">NET</div>
                 </div>
-                <div class="text-sm text-gray-600">Target Yield</div>
+                <div class="metric-label">Target Yield</div>
             </div>
-            <div class="metric-card text-center">
+            
+            <div class="metric-card">
                 <div class="metric-value">32</div>
-                <div class="text-sm text-gray-600">Pipeline Assets</div>
+                <div class="metric-label">Pipeline Assets</div>
             </div>
-            <div class="metric-card text-center">
+            
+            <div class="metric-card">
                 <div class="metric-value">95%+</div>
-                <div class="text-sm text-gray-600">Occupancy Rate</div>
+                <div class="metric-label">Occupancy Rate</div>
             </div>
-            <div class="metric-card text-center">
+            
+            <div class="metric-card">
                 <div class="metric-value">4.5-5y</div>
-                <div class="text-sm text-gray-600">WALE</div>
+                <div class="metric-label">WALE (Weighted Avg. Lease Expiry)</div>
             </div>
         </div>
         
@@ -169,16 +198,7 @@
             </div>
         </div>
     </div>
-<script>
-    document.addEventListener('keydown', e => {
-        if (e.key === 'ArrowRight' || e.key === ' ') {
-            e.preventDefault();
-            window.parent.postMessage('go-next', '*');
-        } else if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            window.parent.postMessage('go-prev', '*');
-        }
-    });
-</script>
-</body>
+    
+    
+    </body>
 </html>

@@ -7,6 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -24,6 +26,7 @@
             color: #001F3F;
         }
         
+        /* Slide 6: Green Hero Section */
         .hero-section {
             background: linear-gradient(135deg, #008000 0%, #006400 100%);
             border-radius: 20px;
@@ -32,13 +35,23 @@
             margin-bottom: 2rem;
         }
         
+        /* 🔥 CONSISTENT STYLES for Metric Boxes (Matching slide07) 🔥 */
         .metric-card {
             background: white;
             border-radius: 12px;
+            /* Added min-height to help enforce visual size consistency */
+            min-height: 150px; 
             padding: 1.5rem;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             border-left: 4px solid #FFD700;
             transition: transform 0.3s ease;
+            
+            /* Use Flexbox for reliable vertical/horizontal centering */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
         }
         
         .metric-card:hover {
@@ -50,7 +63,16 @@
             font-weight: 900;
             color: #008000;
             line-height: 1;
+            margin-bottom: 0.5rem; /* Space below the value */
         }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.2;
+        }
+
+        /* End of Metric Styles */
         
         .content-container {
             height: 100vh;
@@ -101,21 +123,24 @@
         </div>
         
         <div class="grid grid-cols-4 gap-6 mb-6">
-            <div class="metric-card text-center">
+            <div class="metric-card">
                 <div class="metric-value">12</div>
-                <div class="text-sm text-gray-600">Pipeline Projects</div>
+                <div class="metric-label">Pipeline Projects</div>
             </div>
-            <div class="metric-card text-center">
+            
+            <div class="metric-card">
                 <div class="metric-value">₹42cr</div>
-                <div class="text-sm text-gray-600">Avg. Ticket Size</div>
+                <div class="metric-label">Avg. Ticket Size</div>
             </div>
-            <div class="metric-card text-center">
+            
+            <div class="metric-card">
                 <div class="metric-value">17-21%</div>
-                <div class="text-sm text-gray-600">Target IRR</div>
+                <div class="metric-label">Target IRR</div>
             </div>
-            <div class="metric-card text-center">
+            
+            <div class="metric-card">
                 <div class="metric-value">60%</div>
-                <div class="text-sm text-gray-600">Residential Focus</div>
+                <div class="metric-label">Residential Focus</div>
             </div>
         </div>
         
@@ -149,16 +174,6 @@
             </div>
         </div>
     </div>
-<script>
-    document.addEventListener('keydown', e => {
-        if (e.key === 'ArrowRight' || e.key === ' ') {
-            e.preventDefault();
-            window.parent.postMessage('go-next', '*');
-        } else if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            window.parent.postMessage('go-prev', '*');
-        }
-    });
-</script>
+    
 </body>
 </html>
