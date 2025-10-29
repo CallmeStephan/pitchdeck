@@ -9,7 +9,13 @@
         .slideshow-container { width: 100vw; height: 100vh; position: relative; }
         .slide { width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s ease-in-out; }
         .slide.active { opacity: 1; }
-        .slide iframe { width: 100%; height: 100%; border: none; }
+        .slide iframe { 
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+            /* 🔥 FIX: Allows touch events to pass through to the main document */
+            pointer-events: none; 
+        }
         .slide-counter { position: fixed; top: 30px; right: 30px; z-index: 1000; background: rgba(0,0,0,0.8);
             color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; backdrop-filter: blur(10px);}
         .keyboard-hint { position: fixed; bottom: 30px; right: 30px; z-index: 1000; background: rgba(0,0,0,0.8);
@@ -18,56 +24,12 @@
 </head>
 <body>
     <div class="slideshow-container">
-
         <div class="slide active" data-slide="0">
             <iframe src="slide01.html" loading="lazy"></iframe>
         </div>
-
-        <div class="slide" data-slide="1">
-            <iframe src="slide02.html" loading="lazy"></iframe>
-        </div>
-
-        <div class="slide" data-slide="2">
-            <iframe src="slide03.html" loading="lazy"></iframe>
-        </div>
-
-        <div class="slide" data-slide="3">
-            <iframe src="slide04.html" loading="lazy"></iframe>
-        </div>
-
-        <div class="slide" data-slide="4">
-            <iframe src="slide05.html" loading="lazy"></iframe>
-        </div>
-
-        <div class="slide" data-slide="5">
-            <iframe src="slide06.html" loading="lazy"></iframe>
-        </div>
-
-        <div class="slide" data-slide="6">
-            <iframe src="slide07.html" loading="lazy"></iframe>
-        </div>
-
-        <div class="slide" data-slide="7">
-            <iframe src="slide08.html" loading="lazy"></iframe>
-        </div>
-
-        <div class="slide" data-slide="8">
-            <iframe src="slide09.html" loading="lazy"></iframe>
-        </div>
-
-        <div class="slide" data-slide="9">
-            <iframe src="slide10.html" loading="lazy"></iframe>
-        </div>
-
-        <div class="slide" data-slide="10">
-            <iframe src="slide11.html" loading="lazy"></iframe>
-        </div>
-
         <div class="slide" data-slide="11">
             <iframe src="slide12.html" loading="lazy"></iframe>
         </div>
-
-
     </div>
 
       <div class="slide-counter">
@@ -84,7 +46,7 @@
           
           let touchstartX = 0;
           let touchendX = 0;
-          const minSwipeDistance = 50; // Minimum pixels to count as a swipe
+          const minSwipeDistance = 50; 
 
           function updateSlideDisplay() {
               slides.forEach((slide, index) => {
@@ -118,7 +80,7 @@
               }
           }
   
-          // --- 1. Keyboard Navigation (Desktop/Tablet with keyboard) ---
+          // --- 1. Keyboard Navigation ---
           window.addEventListener('keydown', e => {
               if (e.key === 'ArrowRight' || e.key === ' ') {
                   e.preventDefault();
@@ -135,28 +97,32 @@
               }
           });
           
-          // --- 2. Touch/Swipe Navigation (Smartphones/Tablets) ---
+          // --- 2. Touch/Swipe Navigation ---
           document.addEventListener('touchstart', e => {
-              touchstartX = e.changedTouches[0].screenX;
+              // Ensure we are tracking touch on the main document body
+              if (e.target.tagName !== 'IFRAME') {
+                  touchstartX = e.changedTouches[0].screenX;
+              }
           });
 
           document.addEventListener('touchend', e => {
-              touchendX = e.changedTouches[0].screenX;
-              
-              const swipeDistance = touchendX - touchstartX;
+              if (touchstartX !== 0) { // Only run if a touchstart was registered
+                  touchendX = e.changedTouches[0].screenX;
+                  
+                  const swipeDistance = touchendX - touchstartX;
 
-              if (swipeDistance > minSwipeDistance) {
-                  // Swipe Right (Go Back)
-                  e.preventDefault();
-                  prevSlide();
-              } else if (swipeDistance < -minSwipeDistance) {
-                  // Swipe Left (Go Next)
-                  e.preventDefault();
-                  nextSlide();
+                  if (swipeDistance > minSwipeDistance) {
+                      e.preventDefault();
+                      prevSlide();
+                  } else if (swipeDistance < -minSwipeDistance) {
+                      e.preventDefault();
+                      nextSlide();
+                  }
+                  touchstartX = 0; // Reset
               }
           });
   
-          // --- 3. Communication from IFrames ---
+          // --- 3. Communication from IFrames (if any slide still sends a postMessage) ---
           window.addEventListener('message', e => {
               if (e.data === 'go-next') {
                   nextSlide();
