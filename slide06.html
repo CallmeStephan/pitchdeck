@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamayyuz Capital - Growth Fund</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            color: #001F3F;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #008000 0%, #006400 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+            margin-bottom: 2rem;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #FFD700;
+            transition: transform 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #008000;
+            line-height: 1;
+        }
+        
+        .content-container {
+            height: 100vh;
+            width: 100vw;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #001F3F;
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .location-tag {
+            background: #008000;
+            color: white;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="hero-section">
+            <div class="flex items-center mb-4">
+                <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mr-6">
+                    <i class="fas fa-rocket text-green text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">Tamayyuz Capital</h1>
+                    <p class="text-xl opacity-90">Growth – Development Alpha</p>
+                </div>
+            </div>
+            
+            <p class="text-lg opacity-90 max-w-4xl">
+                Strategic investment in high-quality development projects across India's premier urban centers, 
+                targeting superior risk-adjusted returns through disciplined asset selection and active value creation.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-4 gap-6 mb-6">
+            <div class="metric-card text-center">
+                <div class="metric-value">12</div>
+                <div class="text-sm text-gray-600">Pipeline Projects</div>
+            </div>
+            <div class="metric-card text-center">
+                <div class="metric-value">₹42cr</div>
+                <div class="text-sm text-gray-600">Avg. Ticket Size</div>
+            </div>
+            <div class="metric-card text-center">
+                <div class="metric-value">17-21%</div>
+                <div class="text-sm text-gray-600">Target IRR</div>
+            </div>
+            <div class="metric-card text-center">
+                <div class="metric-value">60%</div>
+                <div class="text-sm text-gray-600">Residential Focus</div>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8">
+            <div class="highlight-box">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-map-marker-alt mr-3"></i>
+                    Target Markets
+                </h3>
+                <div class="mb-4">
+                    <span class="location-tag">MMR/Kharghar/Taloja</span>
+                    <span class="location-tag">Pune</span>
+                    <span class="location-tag">Hyderabad</span>
+                    <span class="location-tag">Bengaluru</span>
+                    <span class="location-tag">NCR</span>
+                </div>
+                <p class="text-sm">Focus on high-growth corridors with strong infrastructure development and demographic tailwinds</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-cogs mr-3"></i>
+                    Investment Strategy
+                </h3>
+                <ul class="space-y-2 text-sm">
+                    <li>• <strong>Off-market/JV sourcing</strong> for proprietary deal flow</li>
+                    <li>• <strong>Regulatory-clear assets only</strong> - zero litigation risk</li>
+                    <li>• <strong>Rigorous IC process</strong> with third-party QS validation</li>
+                    <li>• <strong>Full title diligence</strong> with insurance backup</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

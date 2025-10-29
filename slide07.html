@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseerat Holdings - Income Fund</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            color: #001F3F;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            color: #001F3F;
+            margin-bottom: 2rem;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #008000;
+            transition: transform 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #008000;
+            line-height: 1;
+        }
+        
+        .content-container {
+            height: 100vh;
+            width: 100vw;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #008000 0%, #006400 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        .location-tag {
+            background: #FFD700;
+            color: #001F3F;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.25rem;
+        }
+        
+        .yield-indicator {
+            background: #FFD700;
+            color: #001F3F;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="hero-section">
+            <div class="flex items-center mb-4">
+                <div class="w-16 h-16 bg-navy rounded-full flex items-center justify-center mr-6">
+                    <i class="fas fa-coins text-gold text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">Baseerat Holdings</h1>
+                    <p class="text-xl font-semibold opacity-90">Income — Durable Yield</p>
+                </div>
+            </div>
+            
+            <p class="text-lg font-medium opacity-90 max-w-4xl">
+                Strategic acquisition of stabilized rental assets and prime land banks, 
+                generating consistent cash flows with quarterly distributions and ESG certification.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-4 gap-6 mb-6">
+            <div class="metric-card text-center">
+                <div class="yield-indicator">
+                    <div>8-9%</div>
+                    <div class="text-xs">NET</div>
+                </div>
+                <div class="text-sm text-gray-600">Target Yield</div>
+            </div>
+            <div class="metric-card text-center">
+                <div class="metric-value">32</div>
+                <div class="text-sm text-gray-600">Pipeline Assets</div>
+            </div>
+            <div class="metric-card text-center">
+                <div class="metric-value">95%+</div>
+                <div class="text-sm text-gray-600">Occupancy Rate</div>
+            </div>
+            <div class="metric-card text-center">
+                <div class="metric-value">4.5-5y</div>
+                <div class="text-sm text-gray-600">WALE</div>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8">
+            <div class="highlight-box">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-building mr-3"></i>
+                    Asset Profile
+                </h3>
+                <div class="mb-4">
+                    <span class="location-tag">MMR (Anchor)</span>
+                    <span class="location-tag">Bengaluru</span>
+                    <span class="location-tag">Pune</span>
+                    <span class="location-tag">NCR</span>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li>• <strong>Blue-chip tenants</strong> with long-term leases</li>
+                    <li>• <strong>Retail anchors</strong> in prime locations</li>
+                    <li>• <strong>Land banking</strong> for future development upside</li>
+                </ul>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-calendar-alt mr-3"></i>
+                    Distribution Model
+                </h3>
+                <ul class="space-y-2 text-sm">
+                    <li>• <strong>Quarterly distributions</strong> - predictable cash flow</li>
+                    <li>• <strong>Digital reporting</strong> with real-time updates</li>
+                    <li>• <strong>Optional reinvestment</strong> for compound growth</li>
+                    <li>• <strong>ESG certification</strong> for sustainable value</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

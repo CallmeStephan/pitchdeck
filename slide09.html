@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geography & Pipeline - Al Yaqeen Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            color: #001F3F;
+        }
+        
+        .phase-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #008000;
+            transition: transform 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .phase-header {
+            background: linear-gradient(135deg, #008000 0%, #006400 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .location-tag {
+            background: #FFD700;
+            color: #001F3F;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.25rem;
+        }
+        
+        .metric-highlight {
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .content-container {
+            height: 100vh;
+            width: 100vw;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="text-center mb-8">
+            <h1 class="main-title mb-4">Geography & Pipeline</h1>
+            <p class="text-xl text-gray-600">Strategic focus on India's highest-growth corridors</p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8">
+            <!-- Phase 1 -->
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
+                            <span class="text-navy font-bold text-xl">1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Phase 1: MMR Focus</h3>
+                            <p class="text-sm opacity-90">Mumbai Metropolitan Region</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <span class="location-tag">Kharghar</span>
+                    <span class="location-tag">Taloja</span>
+                    <span class="location-tag">Ulwe</span>
+                    <span class="location-tag">NMIA Zone</span>
+                </div>
+                
+                <div class="metric-highlight">
+                    <div class="text-2xl font-bold text-green-600">₹188cr</div>
+                    <div class="text-sm text-gray-600">Current Actionable Deals</div>
+                </div>
+                
+                <div class="space-y-2 text-sm">
+                    <p><strong>Strategic Rationale:</strong></p>
+                    <ul class="space-y-1 text-gray-700">
+                        <li>• Infrastructure mega-projects (NMIA, Metro)</li>
+                        <li>• Corporate relocations from Mumbai</li>
+                        <li>• Government policy incentives</li>
+                        <li>• Established developer ecosystem</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Phase 2 -->
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
+                            <span class="text-navy font-bold text-xl">2</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Phase 2: Tier-1 Expansion</h3>
+                            <p class="text-sm opacity-90">National Growth Markets</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <span class="location-tag">Bengaluru</span>
+                    <span class="location-tag">Pune</span>
+                    <span class="location-tag">Hyderabad</span>
+                    <span class="location-tag">NCR</span>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div class="metric-highlight">
+                        <div class="text-xl font-bold text-green-600">12</div>
+                        <div class="text-xs text-gray-600">Development Assets</div>
+                    </div>
+                    <div class="metric-highlight">
+                        <div class="text-xl font-bold text-green-600">32</div>
+                        <div class="text-xs text-gray-600">Stabilized Assets</div>
+                    </div>
+                </div>
+                
+                <div class="space-y-2 text-sm">
+                    <p><strong>Selection Criteria:</strong></p>
+                    <ul class="space-y-1 text-gray-700">
+                        <li>• GDP growth >8% annually</li>
+                        <li>• Population growth >3% annually</li>
+                        <li>• IT/ITES sector presence</li>
+                        <li>• Infrastructure development pipeline</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-8">
+            <div class="inline-flex items-center bg-white rounded-full px-6 py-3 shadow-lg">
+                <i class="fas fa-map text-green mr-2"></i>
+                <span class="text-navy font-semibold">Advanced Diligence in Progress</span>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

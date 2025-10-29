@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Real Estate Market - Al Yaqeen Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            color: #001F3F;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #008000;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #008000;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #001F3F;
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+        
+        .content-container {
+            height: 100vh;
+            width: 100vw;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .growth-indicator {
+            background: #008000;
+            color: white;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="text-center mb-8">
+            <h1 class="main-title mb-4">India Real Estate: Momentum & Opportunity</h1>
+            <p class="text-xl text-gray-600">The world's fastest-growing major economy presents unprecedented investment potential</p>
+        </div>
+        
+        <div class="grid grid-cols-4 gap-6 mb-8">
+            <div class="stat-card text-center">
+                <div class="stat-value">$781B</div>
+                <div class="stat-label">2025 Market Size</div>
+                <div class="growth-indicator mt-2">+62% YoY</div>
+            </div>
+            
+            <div class="stat-card text-center">
+                <div class="stat-value">$1.27T</div>
+                <div class="stat-label">2030 Projection</div>
+                <div class="growth-indicator mt-2">10.5% CAGR</div>
+            </div>
+            
+            <div class="stat-card text-center">
+                <div class="stat-value">7.3%</div>
+                <div class="stat-label">Current GDP Share</div>
+                <div class="growth-indicator mt-2">Target: 15%</div>
+            </div>
+            
+            <div class="stat-card text-center">
+                <div class="stat-value">122M</div>
+                <div class="stat-label">New Urban Residents</div>
+                <div class="growth-indicator mt-2">by 2030</div>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8">
+            <div class="space-y-4">
+                <div class="highlight-box">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-chart-line text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold">Market Dynamics</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li>• Luxury residential sales: <strong>+85% YoY</strong> (NAREDCO)</li>
+                        <li>• Office leasing: <strong>90M+ sq ft</strong> (+24% YoY)</li>
+                        <li>• Foreign capital: <strong>$10.2B</strong> in 9M 2025 (+14% YoY)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="highlight-box">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-rocket text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold">Growth Drivers</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li>• Rapid urbanization and infrastructure development</li>
+                        <li>• Policy reforms: RERA, GST, Smart Cities Mission</li>
+                        <li>• Digitalization and PropTech revolution</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-8">
+            <p class="text-lg text-gray-700 font-medium">India is now a primary allocation in global portfolios</p>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fund Structure & Oversight - Al Yaqeen Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            color: #001F3F;
+        }
+        
+        .structure-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #008000;
+            transition: transform 0.3s ease;
+        }
+        
+        .structure-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .fund-header {
+            background: linear-gradient(135deg, #008000 0%, #006400 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .oversight-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: background 0.3s ease;
+        }
+        
+        .oversight-item:hover {
+            background: #e9ecef;
+        }
+        
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: #001F3F;
+        }
+        
+        .content-container {
+            height: 100vh;
+            width: 100vw;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .highlight-text {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="text-center mb-8">
+            <h1 class="main-title mb-4">Dual-Fund Platform</h1>
+            <p class="text-xl text-gray-600">Institutional-grade structure with comprehensive oversight</p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8 mb-8">
+            <!-- Tamayyuz Capital Structure -->
+            <div class="structure-card">
+                <div class="fund-header">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-rocket text-green text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Tamayyuz Capital</h3>
+                            <p class="text-sm opacity-90">Growth Fund – SEBI AIF Cat II</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">Structure:</span>
+                        <span class="text-green-600 font-semibold">VCC Feeder (Singapore)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">Target:</span>
+                        <span class="font-semibold">₹500cr ($60M)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">Hard Cap:</span>
+                        <span class="font-semibold">₹1,000cr</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Baseerat Holdings Structure -->
+            <div class="structure-card">
+                <div class="fund-header">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-coins text-green text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Baseerat Holdings</h3>
+                            <p class="text-sm opacity-90">Income Fund – SEBI AIF Cat II</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">Structure:</span>
+                        <span class="text-green-600 font-semibold">VCC Feeder (Singapore)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">Target:</span>
+                        <span class="font-semibold">₹500cr ($60M)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">Hard Cap:</span>
+                        <span class="font-semibold">₹1,000cr</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Oversight Section -->
+        <div class="bg-white rounded-20 p-6 shadow-lg">
+            <h3 class="text-2xl font-bold text-center mb-6 text-navy">
+                <span class="highlight-text">Comprehensive Oversight Framework</span>
+            </h3>
+            
+            <div class="grid grid-cols-3 gap-6">
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-center">Governance</h4>
+                    <div class="space-y-2">
+                        <div class="oversight-item">
+                            <div class="icon-circle">
+                                <i class="fas fa-users text-sm"></i>
+                            </div>
+                            <span class="text-sm">Investment Committee</span>
+                        </div>
+                        <div class="oversight-item">
+                            <div class="icon-circle">
+                                <i class="fas fa-balance-scale text-sm"></i>
+                            </div>
+                            <span class="text-sm">Tier-1 Legal Advisors</span>
+                        </div>
+                        <div class="oversight-item">
+                            <div class="icon-circle">
+                                <i class="fas fa-handshake text-sm"></i>
+                            </div>
+                            <span class="text-sm">Local Partners</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-center">Operations</h4>
+                    <div class="space-y-2">
+                        <div class="oversight-item">
+                            <div class="icon-circle">
+                                <i class="fas fa-cogs text-sm"></i>
+                            </div>
+                            <span class="text-sm">Apex/Vistra Admin</span>
+                        </div>
+                        <div class="oversight-item">
+                            <div class="icon-circle">
+                                <i class="fas fa-shield-alt text-sm"></i>
+                            </div>
+                            <span class="text-sm">ICICI/HDFC/Citi Custody</span>
+                        </div>
+                        <div class="oversight-item">
+                            <div class="icon-circle">
+                                <i class="fas fa-calculator text-sm"></i>
+                            </div>
+                            <span class="text-sm">PwC/EY Audit</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-center">Reporting</h4>
+                    <div class="space-y-2">
+                        <div class="oversight-item">
+                            <div class="icon-circle">
+                                <i class="fas fa-chart-bar text-sm"></i>
+                            </div>
+                            <span class="text-sm">Quarterly NAV</span>
+                        </div>
+                        <div class="oversight-item">
+                            <div class="icon-circle">
+                                <i class="fas fa-search text-sm"></i>
+                            </div>
+                            <span class="text-sm">Independent Audit</span>
+                        </div>
+                        <div class="oversight-item">
+                            <div class="icon-circle">
+                                <i class="fas fa-globe text-sm"></i>
+                            </div>
+                            <span class="text-sm">Digital Portal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-6">
+                <p class="text-sm text-gray-600">
+                    <i class="fas fa-check-circle text-green mr-2"></i>
+                    All investments stress-tested, IC-approved, and reported through secure digital portal
+                </p>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

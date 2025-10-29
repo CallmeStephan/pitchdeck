@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Yaqeen Group - Overview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            color: #001F3F;
+        }
+        
+        .fund-card {
+            background: linear-gradient(135deg, #008000 0%, #006400 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0, 128, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .fund-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 128, 0, 0.2);
+        }
+        
+        .fund-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .metric {
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .content-container {
+            height: 100vh;
+            width: 100vw;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #001F3F;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="text-center mb-12">
+            <h1 class="main-title mb-4">Two Strategies, One Platform</h1>
+            <p class="text-xl text-gray-600">Institutional real estate investment for growth and income</p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8 max-w-7xl mx-auto">
+            <!-- Tamayyuz Capital -->
+            <div class="fund-card">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-rocket text-green text-xl"></i>
+                    </div>
+                    <h3 class="fund-title">TAMAYYUZ CAPITAL</h3>
+                </div>
+                <p class="text-sm opacity-90 mb-4">Growth Fund – SEBI AIF Cat II</p>
+                
+                <div class="space-y-3">
+                    <div class="metric">
+                        <div class="metric-value">₹500cr</div>
+                        <div class="metric-label">Target ($60M)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">₹1,000cr</div>
+                        <div class="metric-label">Hard Cap</div>
+                    </div>
+                </div>
+                
+                <p class="text-sm mt-4 opacity-90">• High-quality residential, commercial, mixed-use development<br>
+                • Singapore VCC feeder for global LPs<br>
+                • Target IRR: 17–21%</p>
+            </div>
+            
+            <!-- Baseerat Holdings -->
+            <div class="fund-card">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-coins text-green text-xl"></i>
+                    </div>
+                    <h3 class="fund-title">BASEERAT HOLDINGS</h3>
+                </div>
+                <p class="text-sm opacity-90 mb-4">Income Fund – SEBI AIF Cat II</p>
+                
+                <div class="space-y-3">
+                    <div class="metric">
+                        <div class="metric-value">₹500cr</div>
+                        <div class="metric-label">Target ($60M)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">≥8%</div>
+                        <div class="metric-label">Net Yield Target</div>
+                    </div>
+                </div>
+                
+                <p class="text-sm mt-4 opacity-90">• Stabilized rental and land-banked assets<br>
+                • Quarterly distributions, ESG-certified<br>
+                • Digital reporting, optional reinvestment</p>
+            </div>
+        </div>
+        
+        <div class="highlight-box text-center max-w-4xl mx-auto">
+            <p><i class="fas fa-shield-alt mr-2"></i>Both funds: Zero leverage, best-in-class governance, live investor portal</p>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

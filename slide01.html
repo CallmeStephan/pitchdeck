@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Yaqeen Group - Cover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #001F3F 0%, #008000 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(4rem, 8vw, 8rem);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+        }
+        
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            letter-spacing: 0.05em;
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #FFD700, #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .content-container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .info-box {
+            position: absolute;
+            bottom: 3rem;
+            right: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="text-center text-white">
+            <div class="floating-element">
+                <h1 class="hero-title gradient-text mb-8">AL YAQEEN GROUP</h1>
+            </div>
+            
+            <div class="space-y-6">
+                <p class="subtitle">Institutional Real Asset Investment Platform</p>
+                
+                <div class="flex justify-center items-center space-x-8 mt-12">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mb-3 mx-auto">
+                            <i class="fas fa-chart-line text-navy text-xl"></i>
+                        </div>
+                        <p class="text-sm font-medium">Growth Funds</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mb-3 mx-auto">
+                            <i class="fas fa-coins text-navy text-xl"></i>
+                        </div>
+                        <p class="text-sm font-medium">Income Funds</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mb-3 mx-auto">
+                            <i class="fas fa-shield-alt text-navy text-xl"></i>
+                        </div>
+                        <p class="text-sm font-medium">Governance</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mb-3 mx-auto">
+                            <i class="fas fa-eye text-navy text-xl"></i>
+                        </div>
+                        <p class="text-sm font-medium">Transparency</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <p class="text-sm font-medium">v1.0 | October 2025</p>
+            <p class="text-xs mt-1 opacity-80">info@alyaqeengroup.com</p>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>
