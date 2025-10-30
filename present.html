@@ -14,7 +14,9 @@
             padding: 0; 
             font-family: 'Inter', sans-serif; 
             background-color: #000; 
-            overflow: hidden; 
+            /* 🔥 IMPORTANT: Allow main body to scroll if height exceeds viewport due to browser toolbars */
+            overflow-y: auto; 
+            overflow-x: hidden; 
             -webkit-user-select: none; 
             user-select: none;
         }
@@ -22,32 +24,34 @@
         /* 🔥 FIX 1: Use min-height and auto height to allow content to stretch and body to scroll */
         .slideshow-container { 
             width: 100vw; 
-            min-height: 100vh; 
-            height: auto;      
+            min-height: 100vh; /* Ensures it takes at least the full screen */
+            height: auto;      /* Allows content to push height beyond 100vh */
             position: relative; 
         }
 
-        /* 🔥 FIX 2: Ensure the individual slide can scroll internally if the content overflows the screen */
+        /* 🔥 FIX 2: The individual slide must be scrollable if its content is too long */
         .slide { 
             width: 100%; 
-            min-height: 100vh;
-            height: auto;      
+            min-height: 100vh; /* Minimum height is the full viewport */
+            height: auto;      /* Allows content inside to determine final height */
             position: absolute; 
             top: 0; 
             left: 0; 
             opacity: 0; 
             transition: opacity 0.4s ease-in-out; 
-            overflow-y: auto; /* CRITICAL: Allows content inside the active slide to scroll */
+            overflow-y: auto; /* <--- CRITICAL: Enables scrolling within the active slide */
         }
         .slide.active { 
             opacity: 1; 
+            /* When active and taller than viewport, it allows scrolling. */
+            position: relative; /* Set to relative when active to fully participate in document flow if necessary */
         }
         .slide iframe { 
             /* iframe width/height must be 100% to inherit the (now scrollable) slide height */
             width: 100%; 
             height: 100%; 
             border: none; 
-            pointer-events: none; 
+            pointer-events: none; /* Allows swipe events to pass to the parent document */
             user-drag: none;
             -webkit-user-drag: none;
         }
