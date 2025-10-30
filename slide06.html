@@ -7,21 +7,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="global.css">
     
     <style>
+        /* --- 🌐 GLOBAL/RESPONSIVE OVERRIDES --- */
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
+            /* 🔥 FIX: Ensure content can scroll if needed and respects width */
+            overflow-x: hidden !important; 
+            min-height: 100vh;
+            width: 100%;
         }
         
+        .content-container {
+            /* 🔥 FIX: Use min-height and responsive padding */
+            min-height: 100vh;
+            width: 100%;
+            padding: 3rem 1.5rem; /* Better horizontal padding for mobile */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- STYLING (Kept Clean) --- */
         .main-title {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 6vw, 4rem); /* Clamped font size for better mobile scaling */
             line-height: 1.1;
             color: #001F3F;
         }
@@ -30,23 +43,30 @@
         .hero-section {
             background: linear-gradient(135deg, #008000 0%, #006400 100%);
             border-radius: 20px;
-            padding: 3rem;
+            padding: 2rem 1.5rem; /* Adjusted padding for mobile */
             color: white;
             margin-bottom: 2rem;
         }
         
-        /* 🔥 CONSISTENT STYLES for Metric Boxes (Matching slide07) 🔥 */
+        .hero-section h1 {
+            font-size: 1.8rem; /* Adjusted hero title size on mobile */
+        }
+        
+        .hero-section p {
+            font-size: 1rem; /* Adjusted hero subtitle size on mobile */
+        }
+
+        /* CONSISTENT STYLES for Metric Boxes */
         .metric-card {
             background: white;
             border-radius: 12px;
-            /* Added min-height to help enforce visual size consistency */
-            min-height: 150px; 
-            padding: 1.5rem;
+            /* Adjusted for mobile */
+            min-height: 120px; 
+            padding: 1rem;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             border-left: 4px solid #FFD700;
             transition: transform 0.3s ease;
             
-            /* Use Flexbox for reliable vertical/horizontal centering */
             display: flex;
             flex-direction: column;
             justify-content: center; 
@@ -59,28 +79,17 @@
         }
         
         .metric-value {
-            font-size: 2rem;
+            font-size: 1.5rem; /* Reduced size for better fit in 2-column grid */
             font-weight: 900;
             color: #008000;
             line-height: 1;
-            margin-bottom: 0.5rem; /* Space below the value */
+            margin-bottom: 0.25rem; 
         }
 
         .metric-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* Reduced size */
             color: #666;
             line-height: 1.2;
-        }
-
-        /* End of Metric Styles */
-        
-        .content-container {
-            height: 100vh;
-            width: 100vw;
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         
         .highlight-box {
@@ -95,8 +104,8 @@
             background: #008000;
             color: white;
             border-radius: 20px;
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem; /* Reduced padding */
+            font-size: 0.75rem; /* Reduced font size */
             font-weight: 600;
             display: inline-block;
             margin: 0.25rem;
@@ -106,23 +115,23 @@
 <body>
     <div class="content-container">
         <div class="hero-section">
-            <div class="flex items-center mb-4">
-                <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mr-6">
-                    <i class="fas fa-rocket text-green text-2xl"></i>
+            <div class="flex items-start mb-4">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background-color: #FFD700;">
+                    <i class="fas fa-rocket text-green-800 text-xl"></i>
                 </div>
                 <div>
-                    <h1 class="text-4xl font-bold mb-2">Tamayyuz Capital</h1>
-                    <p class="text-xl opacity-90">Growth – Development Alpha</p>
+                    <h1 class="text-3xl sm:text-4xl font-bold mb-1">Tamayyuz Capital</h1>
+                    <p class="text-base sm:text-xl opacity-90">Growth – Development Alpha</p>
                 </div>
             </div>
             
-            <p class="text-lg opacity-90 max-w-4xl">
+            <p class="text-sm sm:text-lg opacity-90 max-w-4xl">
                 Strategic investment in high-quality development projects across India's premier urban centers, 
                 targeting superior risk-adjusted returns through disciplined asset selection and active value creation.
             </p>
         </div>
         
-        <div class="grid grid-cols-4 gap-6 mb-6">
+        <div class="grid grid-cols-2 gap-4 mb-6 sm:grid-cols-4 sm:gap-6">
             <div class="metric-card">
                 <div class="metric-value">12</div>
                 <div class="metric-label">Pipeline Projects</div>
@@ -144,32 +153,32 @@
             </div>
         </div>
         
-        <div class="grid grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             <div class="highlight-box">
-                <h3 class="text-xl font-bold mb-4 flex items-center">
+                <h3 class="text-lg sm:text-xl font-bold mb-4 flex items-center">
                     <i class="fas fa-map-marker-alt mr-3"></i>
                     Target Markets
                 </h3>
-                <div class="mb-4">
+                <div class="flex flex-wrap gap-2 mb-4">
                     <span class="location-tag">MMR/Kharghar/Taloja</span>
                     <span class="location-tag">Pune</span>
                     <span class="location-tag">Hyderabad</span>
                     <span class="location-tag">Bengaluru</span>
                     <span class="location-tag">NCR</span>
                 </div>
-                <p class="text-sm">Focus on high-growth corridors with strong infrastructure development and demographic tailwinds</p>
+                <p class="text-xs sm:text-sm">Focus on high-growth corridors with strong infrastructure development and demographic tailwinds</p>
             </div>
             
             <div class="highlight-box">
-                <h3 class="text-xl font-bold mb-4 flex items-center">
+                <h3 class="text-lg sm:text-xl font-bold mb-4 flex items-center">
                     <i class="fas fa-cogs mr-3"></i>
                     Investment Strategy
                 </h3>
-                <ul class="space-y-2 text-sm">
-                    <li>• <strong>Off-market/JV sourcing</strong> for proprietary deal flow</li>
-                    <li>• <strong>Regulatory-clear assets only</strong> - zero litigation risk</li>
-                    <li>• <strong>Rigorous IC process</strong> with third-party QS validation</li>
-                    <li>• <strong>Full title diligence</strong> with insurance backup</li>
+                <ul class="space-y-2 text-xs sm:text-sm list-disc ml-4">
+                    <li><strong>Off-market/JV sourcing</strong> for proprietary deal flow</li>
+                    <li><strong>Regulatory-clear assets only</strong> - zero litigation risk</li>
+                    <li><strong>Rigorous IC process</strong> with third-party QS validation</li>
+                    <li><strong>Full title diligence</strong> with insurance backup</li>
                 </ul>
             </div>
         </div>

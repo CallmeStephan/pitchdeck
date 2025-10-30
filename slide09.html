@@ -7,19 +7,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
     <style>
+        /* --- 🌐 GLOBAL/RESPONSIVE OVERRIDES --- */
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
+            /* 🔥 FIX: Ensure content can scroll if needed and respects width */
+            overflow-x: hidden !important; 
+            min-height: 100vh;
+            width: 100%;
         }
         
+        .content-container {
+            /* 🔥 FIX: Use min-height and responsive padding */
+            min-height: 100vh;
+            width: 100%;
+            padding: 3rem 1.5rem; /* Better horizontal padding for mobile */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- STYLING (Kept Clean) --- */
         .main-title {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 6vw, 4rem); /* Clamped font size for better mobile scaling */
             line-height: 1.1;
             color: #001F3F;
         }
@@ -27,7 +41,7 @@
         .phase-card {
             background: white;
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 1.5rem; /* Adjusted padding for mobile */
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             border-top: 4px solid #008000;
             transition: transform 0.3s ease;
@@ -41,16 +55,20 @@
             background: linear-gradient(135deg, #008000 0%, #006400 100%);
             color: white;
             border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 1rem; /* Adjusted padding for mobile */
+            margin-bottom: 1rem;
+        }
+        
+        .phase-header h3 {
+            font-size: 1.5rem; /* Adjusted title size */
         }
         
         .location-tag {
             background: #FFD700;
             color: #001F3F;
             border-radius: 20px;
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem; /* Reduced padding/size */
+            font-size: 0.75rem;
             font-weight: 600;
             display: inline-block;
             margin: 0.25rem;
@@ -64,13 +82,11 @@
             margin: 1rem 0;
         }
         
-        .content-container {
-            height: 100vh;
-            width: 100vw;
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .metric-highlight .text-2xl {
+            font-size: 1.5rem; /* Reduced size for better fit */
+        }
+        .metric-highlight .text-xl {
+            font-size: 1.25rem; /* Reduced size for better fit */
         }
     </style>
 </head>
@@ -78,25 +94,24 @@
     <div class="content-container">
         <div class="text-center mb-8">
             <h1 class="main-title mb-4">Geography & Pipeline</h1>
-            <p class="text-xl text-gray-600">Strategic focus on India's highest-growth corridors</p>
+            <p class="text-base sm:text-xl text-gray-600">Strategic focus on India's highest-growth corridors</p>
         </div>
         
-        <div class="grid grid-cols-2 gap-8">
-            <!-- Phase 1 -->
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             <div class="phase-card">
                 <div class="phase-header">
                     <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
-                            <span class="text-navy font-bold text-xl">1</span>
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4" style="background-color: #FFD700;">
+                            <span class="text-gray-800 font-bold text-lg">1</span>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold">Phase 1: MMR Focus</h3>
-                            <p class="text-sm opacity-90">Mumbai Metropolitan Region</p>
+                            <h3 class="text-xl sm:text-2xl font-bold">Phase 1: MMR Focus</h3>
+                            <p class="text-xs sm:text-sm opacity-90">Mumbai Metropolitan Region</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mb-4">
+                <div class="flex flex-wrap gap-1 mb-4">
                     <span class="location-tag">Kharghar</span>
                     <span class="location-tag">Taloja</span>
                     <span class="location-tag">Ulwe</span>
@@ -104,69 +119,68 @@
                 </div>
                 
                 <div class="metric-highlight">
-                    <div class="text-2xl font-bold text-green-600">₹188cr</div>
+                    <div class="text-xl font-bold text-green-600">₹188cr</div>
                     <div class="text-sm text-gray-600">Current Actionable Deals</div>
                 </div>
                 
-                <div class="space-y-2 text-sm">
-                    <p><strong>Strategic Rationale:</strong></p>
-                    <ul class="space-y-1 text-gray-700">
-                        <li>• Infrastructure mega-projects (NMIA, Metro)</li>
-                        <li>• Corporate relocations from Mumbai</li>
-                        <li>• Government policy incentives</li>
-                        <li>• Established developer ecosystem</li>
+                <div class="space-y-2 text-xs sm:text-sm">
+                    <p class="font-bold">Strategic Rationale:</p>
+                    <ul class="space-y-1 text-gray-700 list-disc ml-4">
+                        <li>Infrastructure mega-projects (NMIA, Metro)</li>
+                        <li>Corporate relocations from Mumbai</li>
+                        <li>Government policy incentives</li>
+                        <li>Established developer ecosystem</li>
                     </ul>
                 </div>
             </div>
             
-            <!-- Phase 2 -->
             <div class="phase-card">
                 <div class="phase-header">
                     <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
-                            <span class="text-navy font-bold text-xl">2</span>
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4" style="background-color: #FFD700;">
+                            <span class="text-gray-800 font-bold text-lg">2</span>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold">Phase 2: Tier-1 Expansion</h3>
-                            <p class="text-sm opacity-90">National Growth Markets</p>
+                            <h3 class="text-xl sm:text-2xl font-bold">Phase 2: Tier-1 Expansion</h3>
+                            <p class="text-xs sm:text-sm opacity-90">National Growth Markets</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mb-4">
+                <div class="flex flex-wrap gap-1 mb-4">
                     <span class="location-tag">Bengaluru</span>
                     <span class="location-tag">Pune</span>
                     <span class="location-tag">Hyderabad</span>
                     <span class="location-tag">NCR</span>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="grid grid-cols-1 gap-4 mb-4 sm:grid-cols-2">
                     <div class="metric-highlight">
-                        <div class="text-xl font-bold text-green-600">12</div>
+                        <div class="text-lg font-bold text-green-600">12</div>
                         <div class="text-xs text-gray-600">Development Assets</div>
                     </div>
                     <div class="metric-highlight">
-                        <div class="text-xl font-bold text-green-600">32</div>
+                        <div class="text-lg font-bold text-green-600">32</div>
                         <div class="text-xs text-gray-600">Stabilized Assets</div>
                     </div>
                 </div>
                 
-                <div class="space-y-2 text-sm">
-                    <p><strong>Selection Criteria:</strong></p>
-                    <ul class="space-y-1 text-gray-700">
-                        <li>• GDP growth >8% annually</li>
-                        <li>• Population growth >3% annually</li>
-                        <li>• IT/ITES sector presence</li>
-                        <li>• Infrastructure development pipeline</li>
+                <div class="space-y-2 text-xs sm:text-sm">
+                    <p class="font-bold">Selection Criteria:</p>
+                    <ul class="space-y-1 text-gray-700 list-disc ml-4">
+                        <li>GDP growth >8% annually</li>
+                        <li>Population growth >3% annually</li>
+                        <li>IT/ITES sector presence</li>
+                        <li>Infrastructure development pipeline</li>
                     </ul>
                 </div>
             </div>
         </div>
         
         <div class="text-center mt-8">
-            <div class="inline-flex items-center bg-white rounded-full px-6 py-3 shadow-lg">
-                <i class="fas fa-map text-green mr-2"></i>
-                <span class="text-navy font-semibold">Advanced Diligence in Progress</span>
+            <div class="inline-flex items-center bg-white rounded-full px-4 py-2 shadow-lg sm:px-6 sm:py-3">
+                <i class="fas fa-map text-green-600 mr-2"></i>
+                <span class="text-gray-800 font-semibold text-sm sm:text-base">Advanced Diligence in Progress</span>
             </div>
         </div>
     </div>

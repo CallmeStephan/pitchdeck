@@ -9,18 +9,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* --- 🌐 GLOBAL/RESPONSIVE OVERRIDES --- */
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            overflow: auto; 
-            height: auto;
-            width: 100vw;
+            /* 🔥 FIX: Ensure content can scroll if needed and respects width */
+            overflow-x: hidden !important; 
+            min-height: 100vh;
+            width: 100%;
         }
         
+        .content-container {
+            /* 🔥 FIX: Use min-height and responsive padding */
+            min-height: 100vh; 
+            width: 100%;
+            padding: 3rem 1.5rem; /* Adjusted vertical padding for full content display */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- STYLING (Kept Clean) --- */
         .main-title {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 6vw, 4rem); /* Clamped font size for better mobile scaling */
             line-height: 1.1;
             color: #001F3F;
         }
@@ -28,33 +41,36 @@
         .fund-table {
             background: white;
             border-radius: 20px;
-            padding: 2rem;
+            padding: 0; /* Remove outer padding so inner table content can use it */
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            overflow: visible;
-            margin-bottom: 0.5rem;
         }
         
         .table-header {
             background: linear-gradient(135deg, #008000 0%, #006400 100%);
             color: white;
-            padding: 1.5rem;
-            margin: -2rem -2rem 2rem -2rem;
-            /* 🔥 NEW: Curve top-left and top-right edges */
+            padding: 1rem 1.5rem; /* Adjusted padding */
+            /* Removed negative margins since table padding is now 0 */
+            margin: 0; 
             border-radius: 20px 20px 0 0; 
         }
         
         .metric-row {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 1.5rem; 
-            padding: 0.6rem 0.5rem; 
+            gap: 1rem; /* Reduced gap */
+            padding: 0.75rem 1.5rem; /* Added back horizontal padding to rows */
             border-bottom: 1px solid #e9ecef;
             align-items: center;
+            font-size: 0.9rem; /* Smaller font for better fit */
         }
         
-        .metric-row:last-child {
+        .metric-row:last-of-type { /* Use last-of-type instead of last-child for general rows */
             border-bottom: 1px solid #e9ecef;
             padding-bottom: 0.8rem; 
+        }
+
+        .metric-row:first-of-type {
+            padding-top: 1.5rem;
         }
         
         .metric-label {
@@ -67,52 +83,107 @@
             font-weight: 700;
             color: #001F3F;
             text-align: right;
-            padding-right: 1rem; 
+            padding-right: 0.5rem; /* Reduced right padding */
         }
         
-        .table-header .metric-row > div:nth-child(1) {
-            text-align: left;
+        .table-header .metric-row {
+            padding: 0; /* Header row content spacing is handled by the header padding */
         }
+        
         .table-header .metric-row > div:nth-child(2),
         .table-header .metric-row > div:nth-child(3) {
             text-align: right;
-            padding-right: 1rem;
+            padding-right: 0.5rem;
         }
 
         .highlight-box {
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             color: #001F3F;
             border-radius: 12px;
-            padding: 1rem;
+            padding: 1.5rem;
             font-weight: 600;
             margin-top: 2rem;
         }
 
-        /* 🔥 NEW: Custom class for smaller, aligned highlight text */
         .highlight-text-small {
             font-size: 0.7rem; 
             line-height: 1.2;
             padding-top: 0.1rem; 
         }
-        
-        .content-container {
-            height: auto; 
-            width: 100vw;
-            padding: 5rem 3rem 5rem 3rem; 
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-        
+
         .currency-note {
             background: rgba(255, 215, 0, 0.2);
             border-radius: 8px;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
+            padding: 0.3rem 0.8rem; /* Reduced padding/size */
+            font-size: 0.75rem;
             font-weight: 600;
             color: #001F3F;
             display: inline-block;
             margin-bottom: 1rem;
+        }
+
+        /* 🔥 RESPONSIVE FIX 1: Table transformation (3 columns -> Stacked) */
+        @media (max-width: 768px) {
+            .fund-table {
+                box-shadow: none; /* Remove shadow on stack to look more like a list */
+            }
+            .table-header {
+                display: none; /* Hide the unreadable header */
+            }
+            .metric-row {
+                /* Transform to 1 column for the main label, 
+                   then let the fund columns be managed by inner styles */
+                grid-template-columns: 100%; 
+                gap: 0; 
+                padding: 0;
+                margin-bottom: 1rem; /* Space between stacked rows */
+                border: none;
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Lighter shadow for mobile blocks */
+                padding-bottom: 0.5rem;
+            }
+
+            .metric-row > div:nth-child(1) {
+                /* Styles for the main label (e.g., Target Size) */
+                background: #f1f1f1;
+                color: #001F3F;
+                font-weight: 700;
+                padding: 0.5rem 1rem;
+                text-align: center;
+                border-radius: 12px 12px 0 0;
+            }
+
+            .metric-row > div:nth-child(2),
+            .metric-row > div:nth-child(3) {
+                /* Styles for the two fund values */
+                grid-column: 1 / -1; /* Ensure they take full width */
+                text-align: left;
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px dashed #e0e0e0;
+                padding-right: 1rem;
+            }
+            
+            .metric-row > div:nth-child(3) {
+                border-bottom: none; /* Last value doesn't need a separator */
+            }
+            
+            /* Add fund names as prefixes to the values */
+            .metric-row > div:nth-child(2):before {
+                content: "Tamayyuz (Growth):";
+                font-weight: 600;
+                color: #008000;
+                margin-right: 0.5rem;
+            }
+            .metric-row > div:nth-child(3):before {
+                content: "Baseerat (Income):";
+                font-weight: 600;
+                color: #008000;
+                margin-right: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -121,12 +192,12 @@
         <div class="text-center mb-8">
             <h1 class="main-title mb-4">Fund Economics</h1>
             <div class="currency-note">₹83 = $1 (Exchange Rate)</div>
-            <p class="text-xl text-gray-600">Institutional-grade terms aligned with global standards</p>
+            <p class="text-base sm:text-xl text-gray-600">Institutional-grade terms aligned with global standards</p>
         </div>
         
         <div class="fund-table">
-            <div class="table-header">
-                <div class="metric-row font-bold text-lg">
+            <div class="table-header hidden md:block">
+                <div class="metric-row font-bold text-base">
                     <div>Fund Parameters</div>
                     <div>Tamayyuz (Growth)</div>
                     <div>Baseerat (Income)</div>
@@ -183,21 +254,21 @@
         </div>
         
         <div class="highlight-box text-center">
-            <div class="grid grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-8">
                 <div>
-                    <i class="fas fa-calendar-alt text-2xl mb-1"></i>
+                    <i class="fas fa-calendar-alt text-xl sm:text-2xl mb-1"></i>
                     <p class="highlight-text-small">Multi-close fundraising with equalization</p>
                 </div>
                 <div>
-                    <i class="fas fa-handshake text-2xl mb-1"></i>
+                    <i class="fas fa-handshake text-xl sm:text-2xl mb-1"></i>
                     <p class="highlight-text-small">Co-investment and sidecar programs available</p>
                 </div>
                 <div>
-                    <i class="fas fa-globe text-2xl mb-1"></i>
+                    <i class="fas fa-globe text-xl sm:text-2xl mb-1"></i>
                     <p class="highlight-text-small">Global LP onboarding with Singapore VCC</p>
                 </div>
             </div>
-            <p class="mt-4 text-sm font-medium">
+            <p class="mt-4 text-xs sm:text-sm font-medium">
                 All terms aligned to international norms for institutional LPs
             </p>
         </div>

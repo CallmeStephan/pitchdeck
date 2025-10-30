@@ -3,31 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slideshow</title>
+    <title>Al Yaqeen Group Presentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #000; overflow: hidden; }
-        .slideshow-container { width: 100vw; height: 100vh; position: relative; }
-        .slide { width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s ease-in-out; }
-        .slide.active { opacity: 1; }
+        /* Base styles are already good for full-screen desktop mode */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Inter', sans-serif; 
+            background-color: #000; 
+            overflow: hidden; 
+            -webkit-user-select: none; /* Prevent text selection during swipe */
+            user-select: none;
+        }
+        .slideshow-container { 
+            width: 100vw; 
+            height: 100vh; 
+            position: relative; 
+        }
+        .slide { 
+            width: 100%; 
+            height: 100%; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            opacity: 0; 
+            transition: opacity 0.4s ease-in-out; 
+        }
+        .slide.active { 
+            opacity: 1; 
+        }
         .slide iframe { 
             width: 100%; 
             height: 100%; 
             border: none; 
-            /* 🐛 CRITICAL FIX: Allows swipes on the body underneath the iframe */
+            /* 🔥 CRITICAL FIX: Allows touches/swipes to pass through the iframe to the document body */
             pointer-events: none; 
+            /* Prevent image drag within iframe (cross-browser) */
+            user-drag: none;
+            -webkit-user-drag: none;
         }
-        .slide-counter { position: fixed; top: 30px; right: 30px; z-index: 1000; background: rgba(0,0,0,0.8);
-            color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; 
-            /* 🌐 Safari Compatibility Fix */
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
+
+        /* --- UI Elements --- */
+        .slide-counter, .keyboard-hint { 
+            position: fixed; 
+            z-index: 1000; 
+            background: rgba(0,0,0,0.8);
+            color: white; 
+            border-radius: 15px; 
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
         }
-        .keyboard-hint { position: fixed; bottom: 30px; right: 30px; z-index: 1000; background: rgba(0,0,0,0.8);
-            color: white; padding: 8px 12px; border-radius: 15px; font-size: 12px; 
-            /* 🌐 Safari Compatibility Fix */
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px); 
+
+        .slide-counter { 
+            top: 20px; 
+            right: 20px; 
+            padding: 6px 14px; 
+            font-size: 14px; 
+        }
+        .keyboard-hint { 
+            bottom: 20px; 
+            right: 20px; 
+            padding: 6px 10px; 
+            font-size: 12px; 
             opacity: 0.7;
+        }
+
+        /* --- 📱 Mobile Optimization --- */
+        @media (max-width: 767px) {
+            
+            /* Smaller, less intrusive counter on mobile */
+            .slide-counter {
+                top: 10px; 
+                right: 10px; 
+                padding: 4px 10px; 
+                font-size: 12px;
+                border-radius: 10px;
+            }
+
+            /* Hide the keyboard hint entirely on mobile devices */
+            .keyboard-hint {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -97,7 +157,7 @@
           
           let touchstartX = 0;
           let touchendX = 0;
-          const minSwipeDistance = 50; 
+          const minSwipeDistance = 75; // Increased swipe distance for better control 
 
           function updateSlideDisplay() {
               slides.forEach((slide, index) => {
@@ -149,31 +209,32 @@
           });
           
           // --- 2. Touch/Swipe Navigation (Mobile) ---
+          // Touches are tracked on the window/document because pointer-events: none is set on iframes.
           document.addEventListener('touchstart', e => {
-              // Ensure we are tracking touch on the main document body
-              if (e.target.tagName !== 'IFRAME') {
-                  touchstartX = e.changedTouches[0].screenX;
-              }
+              // Only track first touch point (for single-finger swipe)
+              touchstartX = e.changedTouches[0].screenX;
           });
 
           document.addEventListener('touchend', e => {
-              if (touchstartX !== 0) { // Only run if a touchstart was registered
+              if (touchstartX !== 0) { // Check if a touchstart was successfully registered
                   touchendX = e.changedTouches[0].screenX;
                   
                   const swipeDistance = touchendX - touchstartX;
 
                   if (swipeDistance > minSwipeDistance) {
+                      // Swipe Right (Previous Slide)
                       e.preventDefault();
                       prevSlide();
                   } else if (swipeDistance < -minSwipeDistance) {
+                      // Swipe Left (Next Slide)
                       e.preventDefault();
                       nextSlide();
                   }
-                  touchstartX = 0; // Reset
+                  touchstartX = 0; // Reset touch tracking
               }
           });
   
-          // --- 3. Communication from IFrames (if any slide still sends a postMessage) ---
+          // --- 3. Communication from IFrames (for internal slide events) ---
           window.addEventListener('message', e => {
               if (e.data === 'go-next') {
                   nextSlide();
@@ -183,10 +244,8 @@
           });
           
           // Initial setup
-          if (totalSlides > 0) {
-              document.getElementById('total-slides').textContent = totalSlides;
-              updateSlideDisplay();
-          }
+          document.getElementById('total-slides').textContent = totalSlides;
+          updateSlideDisplay();
       </script>
 </body>
 </html>
