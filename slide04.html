@@ -5,100 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fund Structure & Oversight - Al Yaqeen Group</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="global.css">
     <style>
-        .main-title {
-            font-family: 'Playfair Display', serif;
+        .main-title { font-family: 'Playfair Display', serif; }
+        .gradient-text {
+            background: linear-gradient(to right, #001F3F, #008000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
+
     <div class="content-container">
-        <div class="text-center mb-8">
-            <h1 class="main-title text-navy mb-4">Dual-Fund Platform</h1>
-            <p class="text-base sm:text-xl text-gray-600">Institutional-grade structure with comprehensive oversight</p>
+
+        <!-- Header -->
+        <div class="text-center mb-8 md:mb-12">
+            <h1 class="main-title text-navy text-3xl sm:text-4xl md:text-5xl font-bold mb-3">Institutional Grade Platform</h1>
+            <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">A dual-fund structure with comprehensive, multi-layered oversight.</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Fund Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
+            <!-- Growth Fund -->
             <div class="bg-white rounded-2xl p-6 shadow-lg border-t-4 border-green-600">
-                <div class="bg-gradient-to-r from-green-600 to-green-800 text-white rounded-xl p-6 mb-6">
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4 bg-gold">
-                            <i class="fas fa-rocket text-green-800 text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold">Tamayyuz Capital</h3>
-                            <p class="text-sm opacity-90">Growth Fund – SEBI AIF Cat II</p>
-                        </div>
+                <div class="bg-gradient-to-br from-green-700 to-green-900 text-white rounded-xl p-5 mb-5 flex items-center">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4 bg-yellow-400 shrink-0">
+                        <i class="fas fa-rocket text-2xl text-green-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">Tamayyuz Capital</h3>
+                        <p class="text-sm text-yellow-200">Growth Fund – SEBI AIF Cat II</p>
                     </div>
                 </div>
-                
-                <div class="space-y-3 text-sm">
-                    <div class="flex justify-between items-center"><span class="font-medium">Structure:</span><span class="text-green-600 font-semibold">VCC Feeder (Singapore)</span></div>
-                    <div class="flex justify-between items-center"><span class="font-medium">Target:</span><span class="font-semibold">₹500cr ($60M)</span></div>
-                    <div class="flex justify-between items-center"><span class="font-medium">Hard Cap:</span><span class="font-semibold">₹1,000cr</span></div>
+                <div class="space-y-3 text-sm text-gray-700">
+                    <div class="flex justify-between items-center"><span class="font-medium text-gray-500">Structure:</span><span class="text-green-700 font-semibold">VCC Feeder (Singapore)</span></div>
+                    <div class="flex justify-between items-center"><span class="font-medium text-gray-500">Target:</span><span class="font-semibold">₹500cr ($60M)</span></div>
+                    <div class="flex justify-between items-center"><span class="font-medium text-gray-500">Hard Cap:</span><span class="font-semibold">₹1,000cr</span></div>
                 </div>
             </div>
             
+            <!-- Income Fund -->
             <div class="bg-white rounded-2xl p-6 shadow-lg border-t-4 border-green-600">
-                <div class="bg-gradient-to-r from-green-600 to-green-800 text-white rounded-xl p-6 mb-6">
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4 bg-gold">
-                            <i class="fas fa-coins text-green-800 text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold">Baseerat Holdings</h3>
-                            <p class="text-sm opacity-90">Income Fund – SEBI AIF Cat II</p>
-                        </div>
+                <div class="bg-gradient-to-br from-green-700 to-green-900 text-white rounded-xl p-5 mb-5 flex items-center">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4 bg-yellow-400 shrink-0">
+                        <i class="fas fa-coins text-2xl text-green-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">Baseerat Holdings</h3>
+                        <p class="text-sm text-yellow-200">Income Fund – SEBI AIF Cat II</p>
                     </div>
                 </div>
-                
-                <div class="space-y-3 text-sm">
-                    <div class="flex justify-between items-center"><span class="font-medium">Structure:</span><span class="text-green-600 font-semibold">VCC Feeder (Singapore)</span></div>
-                    <div class="flex justify-between items-center"><span class="font-medium">Target:</span><span class="font-semibold">₹500cr ($60M)</span></div>
-                    <div class="flex justify-between items-center"><span class="font-medium">Hard Cap:</span><span class="font-semibold">₹1,000cr</span></div>
+                <div class="space-y-3 text-sm text-gray-700">
+                    <div class="flex justify-between items-center"><span class="font-medium text-gray-500">Structure:</span><span class="text-green-700 font-semibold">VCC Feeder (Singapore)</span></div>
+                    <div class="flex justify-between items-center"><span class="font-medium text-gray-500">Target:</span><span class="font-semibold">₹500cr ($60M)</span></div>
+                    <div class="flex justify-between items-center"><span class="font-medium text-gray-500">Hard Cap:</span><span class="font-semibold">₹1,000cr</span></div>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-2xl p-6 shadow-lg">
-            <h3 class="text-xl sm:text-2xl font-bold text-center mb-6 text-navy">
-                <span class="bg-gradient-to-r from-gold to-yellow-500 bg-clip-text text-transparent">Comprehensive Oversight Framework</span>
+        <!-- Oversight Framework -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
+            <h3 class="text-2xl sm:text-3xl font-bold text-center mb-6 text-navy gradient-text">
+                Comprehensive Oversight Framework
             </h3>
             
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-center">Governance</h4>
-                    <div class="space-y-2">
-                        <div class="flex items-center p-3 bg-gray-50 rounded-lg"><div class="w-8 h-8 bg-gold rounded-full flex items-center justify-center mr-3 text-navy text-sm"><i class="fas fa-users"></i></div><span class="text-sm">Investment Committee</span></div>
-                        <div class="flex items-center p-3 bg-gray-50 rounded-lg"><div class="w-8 h-8 bg-gold rounded-full flex items-center justify-center mr-3 text-navy text-sm"><i class="fas fa-balance-scale"></i></div><span class="text-sm">Tier-1 Legal Advisors</span></div>
-                        <div class="flex items-center p-3 bg-gray-50 rounded-lg"><div class="w-8 h-8 bg-gold rounded-full flex items-center justify-center mr-3 text-navy text-sm"><i class="fas fa-handshake"></i></div><span class="text-sm">Local Partners</span></div>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <!-- Governance -->
+                <div class="space-y-3">
+                    <h4 class="font-bold text-lg text-center text-navy mb-3 border-b-2 border-yellow-400 pb-2">Governance</h4>
+                    <div class="flex items-center p-3 bg-gray-100 rounded-lg"><div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center mr-3 text-navy text-sm shrink-0"><i class="fas fa-users"></i></div><span class="text-sm">Investment Committee</span></div>
+                    <div class="flex items-center p-3 bg-gray-100 rounded-lg"><div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center mr-3 text-navy text-sm shrink-0"><i class="fas fa-balance-scale"></i></div><span class="text-sm">Tier-1 Legal Advisors</span></div>
+                    <div class="flex items-center p-3 bg-gray-100 rounded-lg"><div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center mr-3 text-navy text-sm shrink-0"><i class="fas fa-handshake"></i></div><span class="text-sm">Local Partners</span></div>
                 </div>
                 
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-center">Operations</h4>
-                    <div class="space-y-2">
-                        <div class="flex items-center p-3 bg-gray-50 rounded-lg"><div class="w-8 h-8 bg-gold rounded-full flex items-center justify-center mr-3 text-navy text-sm"><i class="fas fa-cogs"></i></div><span class="text-sm">Apex/Vistra Admin</span></div>
-                        <div class="flex items-center p-3 bg-gray-50 rounded-lg"><div class="w-8 h-8 bg-gold rounded-full flex items-center justify-center mr-3 text-navy text-sm"><i class="fas fa-shield-alt"></i></div><span class="text-sm">ICICI/HDFC/Citi Custody</span></div>
-                        <div class="flex items-center p-3 bg-gray-50 rounded-lg"><div class="w-8 h-8 bg-gold rounded-full flex items-center justify-center mr-3 text-navy text-sm"><i class="fas fa-calculator"></i></div><span class="text-sm">PwC/EY Audit</span></div>
-                    </div>
+                <!-- Operations -->
+                <div class="space-y-3">
+                    <h4 class="font-bold text-lg text-center text-navy mb-3 border-b-2 border-yellow-400 pb-2">Operations</h4>
+                    <div class="flex items-center p-3 bg-gray-100 rounded-lg"><div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center mr-3 text-navy text-sm shrink-0"><i class="fas fa-cogs"></i></div><span class="text-sm">Apex/Vistra Admin</span></div>
+                    <div class="flex items-center p-3 bg-gray-100 rounded-lg"><div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center mr-3 text-navy text-sm shrink-0"><i class="fas fa-shield-alt"></i></div><span class="text-sm">ICICI/HDFC/Citi Custody</span></div>
+                    <div class="flex items-center p-3 bg-gray-100 rounded-lg"><div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center mr-3 text-navy text-sm shrink-0"><i class="fas fa-calculator"></i></div><span class="text-sm">PwC/EY Audit</span></div>
                 </div>
                 
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-center">Reporting</h4>
-                    <div class="space-y-2">
-                        <div class="flex items-center p-3 bg-gray-50 rounded-lg"><div class="w-8 h-8 bg-gold rounded-full flex items-center justify-center mr-3 text-navy text-sm"><i class="fas fa-chart-bar"></i></div><span class="text-sm">Quarterly NAV</span></div>
-                        <div class="flex items-center p-3 bg-gray-50 rounded-lg"><div class="w-8 h-8 bg-gold rounded-full flex items-center justify-center mr-3 text-navy text-sm"><i class="fas fa-search"></i></div><span class="text-sm">Independent Audit</span></div>
-                        <div class="flex items-center p-3 bg-gray-50 rounded-lg"><div class="w-8 h-8 bg-gold rounded-full flex items-center justify-center mr-3 text-navy text-sm"><i class="fas fa-globe"></i></div><span class="text-sm">Digital Portal</span></div>
-                    </div>
+                <!-- Reporting -->
+                <div class="space-y-3">
+                    <h4 class="font-bold text-lg text-center text-navy mb-3 border-b-2 border-yellow-400 pb-2">Reporting</h4>
+                    <div class="flex items-center p-3 bg-gray-100 rounded-lg"><div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center mr-3 text-navy text-sm shrink-0"><i class="fas fa-chart-bar"></i></div><span class="text-sm">Quarterly NAV</span></div>
+                    <div class="flex items-center p-3 bg-gray-100 rounded-lg"><div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center mr-3 text-navy text-sm shrink-0"><i class="fas fa-search"></i></div><span class="text-sm">Independent Audit</span></div>
+                    <div class="flex items-center p-3 bg-gray-100 rounded-lg"><div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center mr-3 text-navy text-sm shrink-0"><i class="fas fa-globe"></i></div><span class="text-sm">Secure Digital Portal</span></div>
                 </div>
-            </div>
-            
-            <div class="text-center mt-6">
-                <p class="text-sm text-gray-600"><i class="fas fa-check-circle text-green-600 mr-2"></i>All investments stress-tested, IC-approved, and reported through secure digital portal</p>
             </div>
         </div>
     </div>

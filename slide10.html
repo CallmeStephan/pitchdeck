@@ -5,69 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fund Economics - Al Yaqeen Group</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="global.css">
     <style>
-        .main-title {
-            font-family: 'Playfair Display', serif;
-        }
+        .main-title { font-family: 'Playfair Display', serif; }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
+
     <div class="content-container">
-        <div class="text-center mb-8">
-            <h1 class="main-title text-navy mb-4">Fund Economics</h1>
-            <div class="inline-block bg-yellow-200 text-yellow-800 rounded-full px-4 py-1 text-sm font-semibold mb-4">₹83 = $1 (Exchange Rate)</div>
-            <p class="text-base sm:text-xl text-gray-600">Institutional-grade terms aligned with global standards</p>
+
+        <!-- Header -->
+        <div class="text-center mb-8 md:mb-12">
+            <h1 class="main-title text-navy text-3xl sm:text-4xl md:text-5xl font-bold mb-3">Fund Economics</h1>
+            <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">Institutional-grade terms aligned with global standards.</p>
         </div>
         
-        <div class="fund-table bg-white rounded-2xl shadow-lg overflow-hidden md:block hidden">
-            <div class="table-header bg-gradient-to-r from-green-600 to-green-800 text-white p-4">
-                <div class="grid grid-cols-3 gap-4 font-bold text-base">
-                    <div>Fund Parameters</div>
-                    <div class="text-right">Tamayyuz (Growth)</div>
-                    <div class="text-right">Baseerat (Income)</div>
-                </div>
+        <!-- Unified Responsive Table -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+            <!-- Desktop Header -->
+            <div class="hidden md:grid grid-cols-3 gap-4 font-bold text-base bg-gradient-to-r from-green-700 to-green-900 text-white p-5">
+                <div>Fund Parameters</div>
+                <div class="text-right">Tamayyuz (Growth)</div>
+                <div class="text-right">Baseerat (Income)</div>
             </div>
             
-            <div class="divide-y divide-gray-200">
-                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Target Size</div><div class="text-right font-bold text-navy">₹500cr ($60M)</div><div class="text-right font-bold text-navy">₹500cr ($60M)</div></div>
-                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Hard Cap</div><div class="text-right font-bold text-navy">₹1,000cr ($120M)</div><div class="text-right font-bold text-navy">₹1,000cr ($120M)</div></div>
-                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Management Fee</div><div class="text-right font-bold text-navy">2.0%</div><div class="text-right font-bold text-navy">1.5%</div></div>
-                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Preferred Return</div><div class="text-right font-bold text-navy">—</div><div class="text-right font-bold text-navy">8% net</div></div>
-                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Carry/Performance</div><div class="text-right font-bold text-navy">20% (European)</div><div class="text-right font-bold text-navy">20% (>pref)</div></div>
-                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">GP Commitment</div><div class="text-right font-bold text-navy">2%</div><div class="text-right font-bold text-navy">2%</div></div>
-                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Fund Term</div><div class="text-right font-bold text-navy">8+2 years</div><div class="text-right font-bold text-navy">7+2 years</div></div>
-                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Minimum Investment</div><div class="text-right font-bold text-navy">₹75L / $100k</div><div class="text-right font-bold text-navy">₹75L / $100k</div></div>
+            <!-- Table Body / Mobile Cards -->
+            <div class="divide-y divide-gray-200 md:divide-y-0">
+                <!-- Data Row Template -->
+                <div class="p-4 md:grid md:grid-cols-3 md:gap-4 md:items-center">
+                    <div class="font-bold text-lg text-navy md:font-semibold md:text-base md:text-gray-600 mb-2 md:mb-0">Target Size</div>
+                    <div class="flex justify-between md:text-right"><span class="md:hidden font-semibold text-green-700">Tamayyuz:</span><span class="font-bold text-navy">₹500cr ($60M)</span></div>
+                    <div class="flex justify-between md:text-right border-t border-dashed border-gray-200 pt-2 mt-2 md:border-0 md:p-0 md:m-0"><span class="md:hidden font-semibold text-green-700">Baseerat:</span><span class="font-bold text-navy">₹500cr ($60M)</span></div>
+                </div>
+                <div class="p-4 md:grid md:grid-cols-3 md:gap-4 md:items-center bg-gray-50 md:bg-white">
+                    <div class="font-bold text-lg text-navy md:font-semibold md:text-base md:text-gray-600 mb-2 md:mb-0">Hard Cap</div>
+                    <div class="flex justify-between md:text-right"><span class="md:hidden font-semibold text-green-700">Tamayyuz:</span><span class="font-bold text-navy">₹1,000cr ($120M)</span></div>
+                    <div class="flex justify-between md:text-right border-t border-dashed border-gray-200 pt-2 mt-2 md:border-0 md:p-0 md:m-0"><span class="md:hidden font-semibold text-green-700">Baseerat:</span><span class="font-bold text-navy">₹1,000cr ($120M)</span></div>
+                </div>
+                <div class="p-4 md:grid md:grid-cols-3 md:gap-4 md:items-center">
+                    <div class="font-bold text-lg text-navy md:font-semibold md:text-base md:text-gray-600 mb-2 md:mb-0">Management Fee</div>
+                    <div class="flex justify-between md:text-right"><span class="md:hidden font-semibold text-green-700">Tamayyuz:</span><span class="font-bold text-navy">2.0%</span></div>
+                    <div class="flex justify-between md:text-right border-t border-dashed border-gray-200 pt-2 mt-2 md:border-0 md:p-0 md:m-0"><span class="md:hidden font-semibold text-green-700">Baseerat:</span><span class="font-bold text-navy">1.5%</span></div>
+                </div>
+                <div class="p-4 md:grid md:grid-cols-3 md:gap-4 md:items-center bg-gray-50 md:bg-white">
+                    <div class="font-bold text-lg text-navy md:font-semibold md:text-base md:text-gray-600 mb-2 md:mb-0">Preferred Return</div>
+                    <div class="flex justify-between md:text-right"><span class="md:hidden font-semibold text-green-700">Tamayyuz:</span><span class="font-bold text-navy">—</span></div>
+                    <div class="flex justify-between md:text-right border-t border-dashed border-gray-200 pt-2 mt-2 md:border-0 md:p-0 md:m-0"><span class="md:hidden font-semibold text-green-700">Baseerat:</span><span class="font-bold text-navy">8% net</span></div>
+                </div>
+                <div class="p-4 md:grid md:grid-cols-3 md:gap-4 md:items-center">
+                    <div class="font-bold text-lg text-navy md:font-semibold md:text-base md:text-gray-600 mb-2 md:mb-0">Carry/Performance</div>
+                    <div class="flex justify-between md:text-right"><span class="md:hidden font-semibold text-green-700">Tamayyuz:</span><span class="font-bold text-navy">20% (European)</span></div>
+                    <div class="flex justify-between md:text-right border-t border-dashed border-gray-200 pt-2 mt-2 md:border-0 md:p-0 md:m-0"><span class="md:hidden font-semibold text-green-700">Baseerat:</span><span class="font-bold text-navy">20% (>pref)</span></div>
+                </div>
+                <div class="p-4 md:grid md:grid-cols-3 md:gap-4 md:items-center bg-gray-50 md:bg-white">
+                    <div class="font-bold text-lg text-navy md:font-semibold md:text-base md:text-gray-600 mb-2 md:mb-0">GP Commitment</div>
+                    <div class="flex justify-between md:text-right"><span class="md:hidden font-semibold text-green-700">Tamayyuz:</span><span class="font-bold text-navy">2%</span></div>
+                    <div class="flex justify-between md:text-right border-t border-dashed border-gray-200 pt-2 mt-2 md:border-0 md:p-0 md:m-0"><span class="md:hidden font-semibold text-green-700">Baseerat:</span><span class="font-bold text-navy">2%</span></div>
+                </div>
+                <div class="p-4 md:grid md:grid-cols-3 md:gap-4 md:items-center">
+                    <div class="font-bold text-lg text-navy md:font-semibold md:text-base md:text-gray-600 mb-2 md:mb-0">Fund Term</div>
+                    <div class="flex justify-between md:text-right"><span class="md:hidden font-semibold text-green-700">Tamayyuz:</span><span class="font-bold text-navy">8+2 years</span></div>
+                    <div class="flex justify-between md:text-right border-t border-dashed border-gray-200 pt-2 mt-2 md:border-0 md:p-0 md:m-0"><span class="md:hidden font-semibold text-green-700">Baseerat:</span><span class="font-bold text-navy">7+2 years</span></div>
+                </div>
+                <div class="p-4 md:grid md:grid-cols-3 md:gap-4 md:items-center bg-gray-50 md:bg-white">
+                    <div class="font-bold text-lg text-navy md:font-semibold md:text-base md:text-gray-600 mb-2 md:mb-0">Minimum Investment</div>
+                    <div class="flex justify-between md:text-right"><span class="md:hidden font-semibold text-green-700">Tamayyuz:</span><span class="font-bold text-navy">₹75L / $100k</span></div>
+                    <div class="flex justify-between md:text-right border-t border-dashed border-gray-200 pt-2 mt-2 md:border-0 md:p-0 md:m-0"><span class="md:hidden font-semibold text-green-700">Baseerat:</span><span class="font-bold text-navy">₹75L / $100k</span></div>
+                </div>
             </div>
         </div>
 
-        <div class="space-y-4 md:hidden">
-            <div class="bg-white rounded-xl shadow-md p-4">
-                <div class="bg-gray-100 text-navy font-bold text-center rounded-lg p-2 mb-2">Target Size</div>
-                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Tamayyuz:</span><span>₹500cr ($60M)</span></div>
-                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Baseerat:</span><span>₹500cr ($60M)</span></div>
+        <!-- Bottom Banner -->
+        <div class="bg-gradient-to-r from-yellow-400 to-amber-500 text-navy rounded-xl p-6 mt-8 md:mt-12 text-center">
+             <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
+                <div class="flex items-center justify-center"><i class="fas fa-calendar-alt text-2xl mr-3"></i><p class="text-sm font-semibold">Multi-close fundraising</p></div>
+                <div class="flex items-center justify-center"><i class="fas fa-handshake text-2xl mr-3"></i><p class="text-sm font-semibold">Co-investment programs</p></div>
+                <div class="flex items-center justify-center"><i class="fas fa-globe text-2xl mr-3"></i><p class="text-sm font-semibold">Global LP onboarding (VCC)</p></div>
             </div>
-            <div class="bg-white rounded-xl shadow-md p-4">
-                <div class="bg-gray-100 text-navy font-bold text-center rounded-lg p-2 mb-2">Management Fee</div>
-                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Tamayyuz:</span><span>2.0%</span></div>
-                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Baseerat:</span><span>1.5%</span></div>
-            </div>
-            <div class="bg-white rounded-xl shadow-md p-4">
-                <div class="bg-gray-100 text-navy font-bold text-center rounded-lg p-2 mb-2">Fund Term</div>
-                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Tamayyuz:</span><span>8+2 years</span></div>
-                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Baseerat:</span><span>7+2 years</span></div>
-            </div>
-        </div>
-        
-        <div class="bg-gradient-to-r from-gold to-yellow-500 text-navy rounded-xl p-6 mt-8">
-            <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3 sm:gap-8">
-                <div><i class="fas fa-calendar-alt text-2xl mb-1"></i><p class="text-xs">Multi-close fundraising with equalization</p></div>
-                <div><i class="fas fa-handshake text-2xl mb-1"></i><p class="text-xs">Co-investment and sidecar programs available</p></div>
-                <div><i class="fas fa-globe text-2xl mb-1"></i><p class="text-xs">Global LP onboarding with Singapore VCC</p></div>
-            </div>
-            <p class="mt-4 text-sm font-semibold text-center">All terms aligned to international norms for institutional LPs</p>
         </div>
     </div>
 </body>
