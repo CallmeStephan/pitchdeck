@@ -14,49 +14,51 @@
             padding: 0; 
             font-family: 'Inter', sans-serif; 
             background-color: #000; 
-            /* 🔥 IMPORTANT: Allow main body to scroll if height exceeds viewport due to browser toolbars */
-            overflow-y: auto; 
             overflow-x: hidden; 
+            /* 🔥 FIX: Allows body to scroll if needed, preventing black cutoff */
+            overflow-y: auto; 
             -webkit-user-select: none; 
             user-select: none;
         }
 
-        /* 🔥 FIX 1: Use min-height and auto height to allow content to stretch and body to scroll */
+        /* 1. Remove Fixed Height from Main Containers */
         .slideshow-container { 
             width: 100vw; 
-            min-height: 100vh; /* Ensures it takes at least the full screen */
-            height: auto;      /* Allows content to push height beyond 100vh */
+            min-height: 100vh;
+            height: auto;      
             position: relative; 
         }
 
-        /* 🔥 FIX 2: The individual slide must be scrollable if its content is too long */
+        /* 2. Revert Slide Positioning for Proper Flow */
         .slide { 
             width: 100%; 
             min-height: 100vh; /* Minimum height is the full viewport */
             height: auto;      /* Allows content inside to determine final height */
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            opacity: 0; 
+            /* 🔥 CRITICAL FIX: Use position: relative and display: none for inactive slides */
+            position: relative; 
+            display: none;
+            opacity: 0;
             transition: opacity 0.4s ease-in-out; 
-            overflow-y: auto; /* <--- CRITICAL: Enables scrolling within the active slide */
+            overflow-y: auto; 
         }
+
         .slide.active { 
+            display: block; /* Show the active slide */
             opacity: 1; 
-            /* When active and taller than viewport, it allows scrolling. */
-            position: relative; /* Set to relative when active to fully participate in document flow if necessary */
         }
+        
         .slide iframe { 
-            /* iframe width/height must be 100% to inherit the (now scrollable) slide height */
+            /* The iframe needs to be 100% of the (now scrollable) slide height */
             width: 100%; 
             height: 100%; 
             border: none; 
-            pointer-events: none; /* Allows swipe events to pass to the parent document */
+            pointer-events: none;
             user-drag: none;
             -webkit-user-drag: none;
         }
 
         /* --- UI Elements --- */
+        /* ... (Keep UI elements as they were, they are positioned fixed) ... */
         .slide-counter, .keyboard-hint { 
             position: fixed; 
             z-index: 1000; 
@@ -68,34 +70,13 @@
             transition: all 0.3s ease;
         }
 
-        .slide-counter { 
-            top: 20px; 
-            right: 20px; 
-            padding: 6px 14px; 
-            font-size: 14px; 
-        }
-        .keyboard-hint { 
-            bottom: 20px; 
-            right: 20px; 
-            padding: 6px 10px; 
-            font-size: 12px; 
-            opacity: 0.7;
-        }
+        .slide-counter { top: 20px; right: 20px; padding: 6px 14px; font-size: 14px; }
+        .keyboard-hint { bottom: 20px; right: 20px; padding: 6px 10px; font-size: 12px; opacity: 0.7; }
 
         /* --- 📱 Mobile Optimization --- */
         @media (max-width: 767px) {
-            
-            .slide-counter {
-                top: 10px; 
-                right: 10px; 
-                padding: 4px 10px; 
-                font-size: 12px;
-                border-radius: 10px;
-            }
-
-            .keyboard-hint {
-                display: none;
-            }
+            .slide-counter { top: 10px; right: 10px; padding: 4px 10px; font-size: 12px; border-radius: 10px; }
+            .keyboard-hint { display: none; }
         }
     </style>
 </head>
@@ -161,6 +142,7 @@
                   if (index === currentSlide) {
                       slide.classList.add('active');
                   } else {
+                      // Ensure inactive slides are completely hidden to prevent overflow
                       slide.classList.remove('active');
                   }
               });
