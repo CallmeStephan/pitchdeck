@@ -9,102 +9,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="global.css">
     <style>
-        /* --- 🌐 GLOBAL/RESPONSIVE OVERRIDES --- */
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #001F3F 0%, #006400 100%); 
-            /* 🔥 FIX: Ensure content can scroll if needed and respects width */
-            overflow-x: hidden !important; 
-            overflow-y: auto; 
-            min-height: 100vh;
-            width: 100%;
-        }
-        
-        .content-container {
-            /* 🔥 FIX: Use min-height and responsive padding */
-            min-height: 100vh;
-            width: 100%;
-            padding: 3rem 1.5rem; /* Adjusted horizontal padding for small screens */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* --- STYLING (Kept Clean) --- */
         .main-title {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: clamp(2rem, 6vw, 4rem); /* Clamped font size for better mobile scaling */
-            line-height: 1.1;
             background: linear-gradient(135deg, #FFD700, #FFFFFF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .contact-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 1.5rem; /* Adjusted padding for mobile */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            text-align: center;
-        }
-        
-        .contact-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .contact-icon {
-            width: 60px; /* Reduced size for mobile */
-            height: 60px;
-            background: linear-gradient(135deg, #008000 0%, #006400 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.5rem; /* Reduced icon size */
-        }
-        
-        .cta-button {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #001F3F;
-            border-radius: 10px; /* Slightly smaller radius */
-            padding: 0.75rem 1.25rem; /* Smaller padding */
-            font-weight: 700;
-            font-size: 0.9rem; /* Smaller font size */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            margin: 0.5rem auto; 
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
-        }
-        
-        .disclaimer {
-            background: rgba(255, 255, 255, 0.1);
-            -webkit-backdrop-filter: blur(10px); 
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 1rem; /* Adjusted padding for mobile */
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            margin-top: 2rem;
-        }
-        
-        .text-navy {
-            color: #001F3F;
         }
     </style>
 </head>
-<body>
+<body class="bg-gradient-to-r from-navy to-green-800">
     <div class="content-container">
         <div class="text-center mb-8">
             <h1 class="main-title mb-4">Contact & Next Steps</h1>
@@ -112,73 +25,57 @@
         </div>
         
         <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-3 md:gap-8">
-            <div class="contact-card">
-                <div class="contact-icon">
+            <div class="contact-card bg-white/95 rounded-2xl p-6 shadow-lg text-center">
+                <div class="contact-icon w-16 h-16 bg-gradient-to-r from-green-600 to-green-800 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl">
                     <i class="fas fa-calendar-alt"></i>
                 </div>
                 <h3 class="text-lg font-bold mb-2 text-navy">Request Meeting & Docs</h3>
-                <p class="text-gray-700 mb-3 text-sm">
-                    Schedule a call, request full offering memo, or pilot pipeline details.
-                </p>
-                <a href="mailto:info@alyaqeengroup.com" class="cta-button">
-                    <i class="fas fa-paper-plane mr-2"></i>
-                    info@alyaqeengroup.com
+                <p class="text-gray-700 mb-3 text-sm">Schedule a call, request full offering memo, or pilot pipeline details.</p>
+                <a href="mailto:info@alyaqeengroup.com" class="cta-button bg-gradient-to-r from-gold to-yellow-500 text-navy rounded-lg px-4 py-2 font-semibold inline-flex items-center justify-center transition hover:scale-105">
+                    <i class="fas fa-paper-plane mr-2"></i>info@alyaqeengroup.com
                 </a>
             </div>
             
-            <div class="contact-card">
-                <div class="contact-icon">
+            <div class="contact-card bg-white/95 rounded-2xl p-6 shadow-lg text-center">
+                <div class="contact-icon w-16 h-16 bg-gradient-to-r from-green-600 to-green-800 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl">
                     <i class="fab fa-linkedin"></i>
                 </div>
                 <h3 class="text-lg font-bold mb-2 text-navy">Sohail Ansari (Founder)</h3>
                 <p class="text-gray-700 mb-3 text-sm">Professional network and updates.</p>
-                <a href="https://www.linkedin.com/in/theansarisohail/" target="_blank" 
-                class="cta-button"
-                rel="noopener noreferrer">
-                    <i class="fas fa-user mr-2"></i>
-                    Connect on LinkedIn
+                <a href="https://www.linkedin.com/in/theansarisohail/" target="_blank" rel="noopener noreferrer" class="cta-button bg-gradient-to-r from-gold to-yellow-500 text-navy rounded-lg px-4 py-2 font-semibold inline-flex items-center justify-center transition hover:scale-105 mb-2">
+                    <i class="fas fa-user mr-2"></i>Connect on LinkedIn
                 </a>
-                <a href="https://calendly.com/theansarisohail/letsconnect" target="_blank" class="cta-button" rel="noopener noreferrer">
-                    <i class="fas fa-calendar-check mr-2"></i>
-                    Book a Call
+                <a href="https://calendly.com/theansarisohail/letsconnect" target="_blank" rel="noopener noreferrer" class="cta-button bg-gradient-to-r from-gold to-yellow-500 text-navy rounded-lg px-4 py-2 font-semibold inline-flex items-center justify-center transition hover:scale-105">
+                    <i class="fas fa-calendar-check mr-2"></i>Book a Call
                 </a>
             </div>
             
-            <div class="contact-card">
-                <div class="contact-icon">
+            <div class="contact-card bg-white/95 rounded-2xl p-6 shadow-lg text-center">
+                <div class="contact-icon w-16 h-16 bg-gradient-to-r from-green-600 to-green-800 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl">
                     <i class="fas fa-globe"></i>
                 </div>
                 <h3 class="text-lg font-bold mb-2 text-navy">Resource Portal</h3>
-                <p class="text-gray-700 mb-3 text-sm">
-                    Live site (Oct 2025): Detailed thesis & legal structures.
-                </p>
-                <a href="https://alyaqeengroup.netlify.app/" target="_blank"
-                class="cta-button" 
-                rel="noopener noreferrer"> 
-                    <i class="fas fa-external-link-alt mr-2"></i>
-                    alyaqeengroup.netlify.app
+                <p class="text-gray-700 mb-3 text-sm">Live site (Oct 2025): Detailed thesis & legal structures.</p>
+                <a href="https://alyaqeengroup.netlify.app/" target="_blank" rel="noopener noreferrer" class="cta-button bg-gradient-to-r from-gold to-yellow-500 text-navy rounded-lg px-4 py-2 font-semibold inline-flex items-center justify-center transition hover:scale-105">
+                    <i class="fas fa-external-link-alt mr-2"></i>alyaqeengroup.netlify.app
                 </a>
             </div>
         </div>
         
         <div class="text-center mb-6">
-            <div class="inline-flex items-center bg-white rounded-full px-4 py-2 shadow-lg sm:px-6 sm:py-3">
-                <i class="fas fa-database text-green-700 mr-2 text-lg"></i>
-                <span class="text-navy font-semibold text-sm sm:text-base">
-                    Draft data room open to eligible investors/advisors on request.
-                </span>
+            <div class="inline-flex items-center bg-white rounded-full px-6 py-3 shadow-lg">
+                <i class="fas fa-database text-green-700 mr-3 text-lg"></i>
+                <span class="text-navy font-semibold text-sm sm:text-base">Draft data room open to eligible investors/advisors on request.</span>
             </div>
         </div>
         
-        <div class="disclaimer text-center">
+        <div class="disclaimer bg-white/20 border border-white/30 rounded-xl p-4 text-center">
             <div class="flex items-center justify-center mb-2">
                 <i class="fas fa-exclamation-triangle mr-2 text-yellow-400"></i>
-                <h4 class="font-bold text-base">Important Notice</h4>
+                <h4 class="font-bold text-base text-white">Important Notice</h4>
             </div>
             <p class="text-base font-bold mb-1 text-white">Strictly private, qualified investors only.</p>          
-            <p class="text-xs opacity-90"> This presentation is for informational purposes only and does not constitute an offer to sell securities.
-            </p>
-                
+            <p class="text-xs opacity-90 text-white">This presentation is for informational purposes only and does not constitute an offer to sell securities.</p>
         </div>
     </div>
 </body>

@@ -7,270 +7,67 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="global.css">
     <style>
-        /* --- 🌐 GLOBAL/RESPONSIVE OVERRIDES --- */
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            /* 🔥 FIX: Ensure content can scroll if needed and respects width */
-            overflow-x: hidden !important; 
-            min-height: 100vh;
-            width: 100%;
-        }
-        
-        .content-container {
-            /* 🔥 FIX: Use min-height and responsive padding */
-            min-height: 100vh; 
-            width: 100%;
-            padding: 3rem 1.5rem; /* Adjusted vertical padding for full content display */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* --- STYLING (Kept Clean) --- */
         .main-title {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: clamp(2rem, 6vw, 4rem); /* Clamped font size for better mobile scaling */
-            line-height: 1.1;
-            color: #001F3F;
-        }
-        
-        .fund-table {
-            background: white;
-            border-radius: 20px;
-            padding: 0; /* Remove outer padding so inner table content can use it */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-        
-        .table-header {
-            background: linear-gradient(135deg, #008000 0%, #006400 100%);
-            color: white;
-            padding: 1rem 1.5rem; /* Adjusted padding */
-            /* Removed negative margins since table padding is now 0 */
-            margin: 0; 
-            border-radius: 20px 20px 0 0; 
-        }
-        
-        .metric-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 1rem; /* Reduced gap */
-            padding: 0.75rem 1.5rem; /* Added back horizontal padding to rows */
-            border-bottom: 1px solid #e9ecef;
-            align-items: center;
-            font-size: 0.9rem; /* Smaller font for better fit */
-        }
-        
-        .metric-row:last-of-type { /* Use last-of-type instead of last-child for general rows */
-            border-bottom: 1px solid #e9ecef;
-            padding-bottom: 0.8rem; 
-        }
-
-        .metric-row:first-of-type {
-            padding-top: 1.5rem;
-        }
-        
-        .metric-label {
-            font-weight: 600;
-            color: #6c757d;
-            text-align: left;
-        }
-        
-        .metric-value {
-            font-weight: 700;
-            color: #001F3F;
-            text-align: right;
-            padding-right: 0.5rem; /* Reduced right padding */
-        }
-        
-        .table-header .metric-row {
-            padding: 0; /* Header row content spacing is handled by the header padding */
-        }
-        
-        .table-header .metric-row > div:nth-child(2),
-        .table-header .metric-row > div:nth-child(3) {
-            text-align: right;
-            padding-right: 0.5rem;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #001F3F;
-            border-radius: 12px;
-            padding: 1.5rem;
-            font-weight: 600;
-            margin-top: 2rem;
-        }
-
-        .highlight-text-small {
-            font-size: 0.7rem; 
-            line-height: 1.2;
-            padding-top: 0.1rem; 
-        }
-
-        .currency-note {
-            background: rgba(255, 215, 0, 0.2);
-            border-radius: 8px;
-            padding: 0.3rem 0.8rem; /* Reduced padding/size */
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #001F3F;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
-        /* 🔥 RESPONSIVE FIX 1: Table transformation (3 columns -> Stacked) */
-        @media (max-width: 768px) {
-            .fund-table {
-                box-shadow: none; /* Remove shadow on stack to look more like a list */
-            }
-            .table-header {
-                display: none; /* Hide the unreadable header */
-            }
-            .metric-row {
-                /* Transform to 1 column for the main label, 
-                   then let the fund columns be managed by inner styles */
-                grid-template-columns: 100%; 
-                gap: 0; 
-                padding: 0;
-                margin-bottom: 1rem; /* Space between stacked rows */
-                border: none;
-                background: white;
-                border-radius: 12px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Lighter shadow for mobile blocks */
-                padding-bottom: 0.5rem;
-            }
-
-            .metric-row > div:nth-child(1) {
-                /* Styles for the main label (e.g., Target Size) */
-                background: #f1f1f1;
-                color: #001F3F;
-                font-weight: 700;
-                padding: 0.5rem 1rem;
-                text-align: center;
-                border-radius: 12px 12px 0 0;
-            }
-
-            .metric-row > div:nth-child(2),
-            .metric-row > div:nth-child(3) {
-                /* Styles for the two fund values */
-                grid-column: 1 / -1; /* Ensure they take full width */
-                text-align: left;
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-                display: flex;
-                justify-content: space-between;
-                border-bottom: 1px dashed #e0e0e0;
-                padding-right: 1rem;
-            }
-            
-            .metric-row > div:nth-child(3) {
-                border-bottom: none; /* Last value doesn't need a separator */
-            }
-            
-            /* Add fund names as prefixes to the values */
-            .metric-row > div:nth-child(2):before {
-                content: "Tamayyuz (Growth):";
-                font-weight: 600;
-                color: #008000;
-                margin-right: 0.5rem;
-            }
-            .metric-row > div:nth-child(3):before {
-                content: "Baseerat (Income):";
-                font-weight: 600;
-                color: #008000;
-                margin-right: 0.5rem;
-            }
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-100">
     <div class="content-container">
         <div class="text-center mb-8">
-            <h1 class="main-title mb-4">Fund Economics</h1>
-            <div class="currency-note">₹83 = $1 (Exchange Rate)</div>
+            <h1 class="main-title text-navy mb-4">Fund Economics</h1>
+            <div class="inline-block bg-yellow-200 text-yellow-800 rounded-full px-4 py-1 text-sm font-semibold mb-4">₹83 = $1 (Exchange Rate)</div>
             <p class="text-base sm:text-xl text-gray-600">Institutional-grade terms aligned with global standards</p>
         </div>
         
-        <div class="fund-table">
-            <div class="table-header hidden md:block">
-                <div class="metric-row font-bold text-base">
+        <div class="fund-table bg-white rounded-2xl shadow-lg overflow-hidden md:block hidden">
+            <div class="table-header bg-gradient-to-r from-green-600 to-green-800 text-white p-4">
+                <div class="grid grid-cols-3 gap-4 font-bold text-base">
                     <div>Fund Parameters</div>
-                    <div>Tamayyuz (Growth)</div>
-                    <div>Baseerat (Income)</div>
+                    <div class="text-right">Tamayyuz (Growth)</div>
+                    <div class="text-right">Baseerat (Income)</div>
                 </div>
             </div>
             
-            <div class="metric-row">
-                <div class="metric-label">Target Size</div>
-                <div class="metric-value">₹500cr ($60M)</div>
-                <div class="metric-value">₹500cr ($60M)</div>
+            <div class="divide-y divide-gray-200">
+                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Target Size</div><div class="text-right font-bold text-navy">₹500cr ($60M)</div><div class="text-right font-bold text-navy">₹500cr ($60M)</div></div>
+                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Hard Cap</div><div class="text-right font-bold text-navy">₹1,000cr ($120M)</div><div class="text-right font-bold text-navy">₹1,000cr ($120M)</div></div>
+                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Management Fee</div><div class="text-right font-bold text-navy">2.0%</div><div class="text-right font-bold text-navy">1.5%</div></div>
+                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Preferred Return</div><div class="text-right font-bold text-navy">—</div><div class="text-right font-bold text-navy">8% net</div></div>
+                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Carry/Performance</div><div class="text-right font-bold text-navy">20% (European)</div><div class="text-right font-bold text-navy">20% (>pref)</div></div>
+                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">GP Commitment</div><div class="text-right font-bold text-navy">2%</div><div class="text-right font-bold text-navy">2%</div></div>
+                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Fund Term</div><div class="text-right font-bold text-navy">8+2 years</div><div class="text-right font-bold text-navy">7+2 years</div></div>
+                <div class="grid grid-cols-3 gap-4 p-4 items-center"><div class="font-semibold text-gray-600">Minimum Investment</div><div class="text-right font-bold text-navy">₹75L / $100k</div><div class="text-right font-bold text-navy">₹75L / $100k</div></div>
             </div>
-            
-            <div class="metric-row">
-                <div class="metric-label">Hard Cap</div>
-                <div class="metric-value">₹1,000cr ($120M)</div>
-                <div class="metric-value">₹1,000cr ($120M)</div>
+        </div>
+
+        <div class="space-y-4 md:hidden">
+            <div class="bg-white rounded-xl shadow-md p-4">
+                <div class="bg-gray-100 text-navy font-bold text-center rounded-lg p-2 mb-2">Target Size</div>
+                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Tamayyuz:</span><span>₹500cr ($60M)</span></div>
+                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Baseerat:</span><span>₹500cr ($60M)</span></div>
             </div>
-            
-            <div class="metric-row">
-                <div class="metric-label">Management Fee</div>
-                <div class="metric-value">2.0%</div>
-                <div class="metric-value">1.5%</div>
+            <div class="bg-white rounded-xl shadow-md p-4">
+                <div class="bg-gray-100 text-navy font-bold text-center rounded-lg p-2 mb-2">Management Fee</div>
+                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Tamayyuz:</span><span>2.0%</span></div>
+                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Baseerat:</span><span>1.5%</span></div>
             </div>
-            
-            <div class="metric-row">
-                <div class="metric-label">Preferred Return</div>
-                <div class="metric-value">—</div>
-                <div class="metric-value">8% net</div>
-            </div>
-            
-            <div class="metric-row">
-                <div class="metric-label">Carry/Performance</div>
-                <div class="metric-value">20% (European)</div>
-                <div class="metric-value">20% (>pref)</div>
-            </div>
-            
-            <div class="metric-row">
-                <div class="metric-label">GP Commitment</div>
-                <div class="metric-value">2%</div>
-                <div class="metric-value">2%</div>
-            </div>
-            
-            <div class="metric-row">
-                <div class="metric-label">Fund Term</div>
-                <div class="metric-value">8+2 years</div>
-                <div class="metric-value">7+2 years</div>
-            </div>
-            
-            <div class="metric-row">
-                <div class="metric-label">Minimum Investment</div>
-                <div class="metric-value">₹75L / $100k</div>
-                <div class="metric-value">₹75L / $100k</div>
+            <div class="bg-white rounded-xl shadow-md p-4">
+                <div class="bg-gray-100 text-navy font-bold text-center rounded-lg p-2 mb-2">Fund Term</div>
+                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Tamayyuz:</span><span>8+2 years</span></div>
+                <div class="flex justify-between items-center"><span class="font-semibold text-green-700">Baseerat:</span><span>7+2 years</span></div>
             </div>
         </div>
         
-        <div class="highlight-box text-center">
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-8">
-                <div>
-                    <i class="fas fa-calendar-alt text-xl sm:text-2xl mb-1"></i>
-                    <p class="highlight-text-small">Multi-close fundraising with equalization</p>
-                </div>
-                <div>
-                    <i class="fas fa-handshake text-xl sm:text-2xl mb-1"></i>
-                    <p class="highlight-text-small">Co-investment and sidecar programs available</p>
-                </div>
-                <div>
-                    <i class="fas fa-globe text-xl sm:text-2xl mb-1"></i>
-                    <p class="highlight-text-small">Global LP onboarding with Singapore VCC</p>
-                </div>
+        <div class="bg-gradient-to-r from-gold to-yellow-500 text-navy rounded-xl p-6 mt-8">
+            <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3 sm:gap-8">
+                <div><i class="fas fa-calendar-alt text-2xl mb-1"></i><p class="text-xs">Multi-close fundraising with equalization</p></div>
+                <div><i class="fas fa-handshake text-2xl mb-1"></i><p class="text-xs">Co-investment and sidecar programs available</p></div>
+                <div><i class="fas fa-globe text-2xl mb-1"></i><p class="text-xs">Global LP onboarding with Singapore VCC</p></div>
             </div>
-            <p class="mt-4 text-xs sm:text-sm font-medium">
-                All terms aligned to international norms for institutional LPs
-            </p>
+            <p class="mt-4 text-sm font-semibold text-center">All terms aligned to international norms for institutional LPs</p>
         </div>
     </div>
 </body>

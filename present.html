@@ -8,57 +8,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Base styles */
         body { 
             margin: 0; 
             padding: 0; 
             font-family: 'Inter', sans-serif; 
             background-color: #000; 
-            overflow-x: hidden; 
-            /* 🔥 FIX: Allows body to scroll if needed, preventing black cutoff */
-            overflow-y: auto; 
+            overflow: hidden;
             -webkit-user-select: none; 
             user-select: none;
         }
 
-        /* 1. Remove Fixed Height from Main Containers */
         .slideshow-container { 
             width: 100vw; 
-            min-height: 100vh;
-            height: auto;      
+            height: 100vh;
             position: relative; 
         }
 
-        /* 2. Revert Slide Positioning for Proper Flow */
         .slide { 
             width: 100%; 
-            min-height: 100vh; /* Minimum height is the full viewport */
-            height: auto;      /* Allows content inside to determine final height */
-            /* 🔥 CRITICAL FIX: Use position: relative and display: none for inactive slides */
-            position: relative; 
-            display: none;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
             opacity: 0;
             transition: opacity 0.4s ease-in-out; 
-            overflow-y: auto; 
+            overflow: hidden;
         }
 
         .slide.active { 
-            display: block; /* Show the active slide */
             opacity: 1; 
+            z-index: 1;
         }
         
         .slide iframe { 
-            /* The iframe needs to be 100% of the (now scrollable) slide height */
             width: 100%; 
             height: 100%; 
             border: none; 
-            pointer-events: none;
-            user-drag: none;
-            -webkit-user-drag: none;
         }
 
-        /* --- UI Elements --- */
-        /* ... (Keep UI elements as they were, they are positioned fixed) ... */
         .slide-counter, .keyboard-hint { 
             position: fixed; 
             z-index: 1000; 
@@ -73,7 +60,6 @@
         .slide-counter { top: 20px; right: 20px; padding: 6px 14px; font-size: 14px; }
         .keyboard-hint { bottom: 20px; right: 20px; padding: 6px 10px; font-size: 12px; opacity: 0.7; }
 
-        /* --- 📱 Mobile Optimization --- */
         @media (max-width: 767px) {
             .slide-counter { top: 10px; right: 10px; padding: 4px 10px; font-size: 12px; border-radius: 10px; }
             .keyboard-hint { display: none; }
@@ -82,50 +68,25 @@
 </head>
 <body>
     <div class="slideshow-container">
-
-        <div class="slide active" data-slide="0">
-            <iframe src="slide01.html" loading="lazy" title="Presentation Slide 1: Introduction"></iframe>
-        </div>
-        <div class="slide" data-slide="1">
-            <iframe src="slide02.html" loading="lazy" title="Presentation Slide 2: Company Overview"></iframe>
-        </div>
-        <div class="slide" data-slide="2">
-            <iframe src="slide03.html" loading="lazy" title="Presentation Slide 3: Market Opportunity"></iframe>
-        </div>
-        <div class="slide" data-slide="3">
-            <iframe src="slide04.html" loading="lazy" title="Presentation Slide 4: Investment Thesis"></iframe>
-        </div>
-        <div class="slide" data-slide="4">
-            <iframe src="slide05.html" loading="lazy" title="Presentation Slide 5: Target Assets"></iframe>
-        </div>
-        <div class="slide" data-slide="5">
-            <iframe src="slide06.html" loading="lazy" title="Presentation Slide 6: Risk Management"></iframe>
-        </div>
-        <div class="slide" data-slide="6">
-            <iframe src="slide07.html" loading="lazy" title="Presentation Slide 7: Portfolio Strategy"></iframe>
-        </div>
-        <div class="slide" data-slide="7">
-            <iframe src="slide08.html" loading="lazy" title="Presentation Slide 8: Case Studies"></iframe>
-        </div>
-        <div class="slide" data-slide="8">
-            <iframe src="slide09.html" loading="lazy" title="Presentation Slide 9: Projected Returns"></iframe>
-        </div>
-        <div class="slide" data-slide="9">
-            <iframe src="slide10.html" loading="lazy" title="Presentation Slide 10: Fund Economics"></iframe>
-        </div>
-        <div class="slide" data-slide="10">
-            <iframe src="slide11.html" loading="lazy" title="Presentation Slide 11: Leadership and Partners"></iframe>
-        </div>
-        <div class="slide" data-slide="11">
-            <iframe src="slide12.html" loading="lazy" title="Presentation Slide 12: Contact and Next Steps"></iframe>
-        </div>
+        <div class="slide active" data-slide="0"><iframe src="slide01.html" loading="lazy"></iframe></div>
+        <div class="slide" data-slide="1"><iframe src="slide02.html" loading="lazy"></iframe></div>
+        <div class="slide" data-slide="2"><iframe src="slide03.html" loading="lazy"></iframe></div>
+        <div class="slide" data-slide="3"><iframe src="slide04.html" loading="lazy"></iframe></div>
+        <div class="slide" data-slide="4"><iframe src="slide05.html" loading="lazy"></iframe></div>
+        <div class="slide" data-slide="5"><iframe src="slide06.html" loading="lazy"></iframe></div>
+        <div class="slide" data-slide="6"><iframe src="slide07.html" loading="lazy"></iframe></div>
+        <div class="slide" data-slide="7"><iframe src="slide08.html" loading="lazy"></iframe></div>
+        <div class="slide" data-slide="8"><iframe src="slide09.html" loading="lazy"></iframe></div>
+        <div class="slide" data-slide="9"><iframe src="slide10.html" loading="lazy"></iframe></div>
+        <div class="slide" data-slide="10"><iframe src="slide11.html" loading="lazy"></iframe></div>
+        <div class="slide" data-slide="11"><iframe src="slide12.html" loading="lazy"></iframe></div>
     </div>
 
       <div class="slide-counter">
           <span id="current-slide">1</span> / <span id="total-slides">12</span>
       </div>
       <div class="keyboard-hint">
-          ← → / Swipe Left/Right / Space
+          ← → / Swipe / Space
       </div>
   
       <script>
@@ -135,90 +96,47 @@
           
           let touchstartX = 0;
           let touchendX = 0;
-          const minSwipeDistance = 75; 
 
           function updateSlideDisplay() {
               slides.forEach((slide, index) => {
-                  if (index === currentSlide) {
-                      slide.classList.add('active');
-                  } else {
-                      // Ensure inactive slides are completely hidden to prevent overflow
-                      slide.classList.remove('active');
-                  }
+                  slide.classList.toggle('active', index === currentSlide);
               });
               document.getElementById('current-slide').textContent = currentSlide + 1;
           }
   
-          function goToSlide(i) {
-              if (i >= 0 && i < totalSlides) {
-                  currentSlide = i;
-                  updateSlideDisplay();
-              }
+          function goToSlide(n) {
+              currentSlide = (n + totalSlides) % totalSlides;
+              updateSlideDisplay();
           }
   
           function nextSlide() {
-              if (currentSlide < totalSlides - 1) {
-                  currentSlide++;
-                  updateSlideDisplay();
-              }
+              goToSlide(currentSlide + 1);
           }
   
           function prevSlide() {
-              if (currentSlide > 0) {
-                  currentSlide--;
-                  updateSlideDisplay();
-              }
+              goToSlide(currentSlide - 1);
           }
   
-          // --- 1. Keyboard Navigation (Desktop) ---
           window.addEventListener('keydown', e => {
-              if (e.key === 'ArrowRight' || e.key === ' ') {
-                  e.preventDefault();
-                  nextSlide();
-              } else if (e.key === 'ArrowLeft') {
-                  e.preventDefault();
-                  prevSlide();
-              } else if (e.key === 'Home') {
-                  e.preventDefault();
-                  goToSlide(0);
-              } else if (e.key === 'End') {
-                  e.preventDefault();
-                  goToSlide(totalSlides - 1);
-              }
+              if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+              else if (e.key === 'ArrowLeft') prevSlide();
           });
           
-          // --- 2. Touch/Swipe Navigation (Mobile) ---
           document.addEventListener('touchstart', e => {
               touchstartX = e.changedTouches[0].screenX;
-          });
+          }, { passive: true });
 
           document.addEventListener('touchend', e => {
-              if (touchstartX !== 0) { 
-                  touchendX = e.changedTouches[0].screenX;
-                  
-                  const swipeDistance = touchendX - touchstartX;
-
-                  if (swipeDistance > minSwipeDistance) {
-                      e.preventDefault();
-                      prevSlide();
-                  } else if (swipeDistance < -minSwipeDistance) {
-                      e.preventDefault();
-                      nextSlide();
-                  }
-                  touchstartX = 0; 
-              }
+              touchendX = e.changedTouches[0].screenX;
+              if (touchendX < touchstartX - 50) nextSlide();
+              if (touchendX > touchstartX + 50) prevSlide();
           });
   
-          // --- 3. Communication from IFrames ---
           window.addEventListener('message', e => {
-              if (e.data === 'go-next') {
-                  nextSlide();
-              } else if (e.data === 'go-prev') {
-                  prevSlide();
-              }
+              if (e.data === 'go-next') nextSlide();
+              else if (e.data === 'go-prev') prevSlide();
           });
           
-          // Initial setup
           document.getElementById('total-slides').textContent = totalSlides;
           updateSlideDisplay();
       </script>
